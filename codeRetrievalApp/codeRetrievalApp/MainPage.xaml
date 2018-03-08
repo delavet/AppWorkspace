@@ -9,12 +9,26 @@
 
     <Grid x:Name="GRIDroot"
           Background="{StaticResource BgAcrylicBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="24" x:Name="HEIGHTtitle"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
         <Grid x:Name="GRIDtitle"
               VerticalAlignment="Top"
               HorizontalAlignment="Stretch"
               Height="24"
-              Background="Transparent">
-            
+              Background="Transparent"
+              Grid.Row="0">
+        </Grid>
+        <Grid x:Name="GRIDcontent"
+              Grid.Row="1">
+            <Canvas Height="200"
+                    Width="350" 
+                    VerticalAlignment="Top" 
+                    Margin="0,25,0,0"
+                    Background="Yellow"
+                    Opacity="0.7">
+            </Canvas>
         </Grid>
     </Grid>
 </Page>
