@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -29,6 +30,17 @@ namespace codeRetrievalApp
             ApplicationView.GetForCurrentView().SetPreferredMinSize(new Size(400, 750));
             ApplicationView.PreferredLaunchViewSize = new Size(400, 750);
             ApplicationView.PreferredLaunchWindowingMode = ApplicationViewWindowingMode.PreferredLaunchViewSize;
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+            var coreTitleBar = Windows.ApplicationModel.Core.CoreApplication.GetCurrentView().TitleBar;
+            var appTitleBar = Windows.UI.ViewManagement.ApplicationView.GetForCurrentView().TitleBar;
+            coreTitleBar.ExtendViewIntoTitleBar = true;
+            appTitleBar.ButtonBackgroundColor = Colors.Transparent;
+            Window.Current.SetTitleBar(GRIDtitle);
+            
         }
     }
 }

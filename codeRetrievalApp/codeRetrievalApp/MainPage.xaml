@@ -7,7 +7,14 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource SystemControlAcrylicWindowBrush}">
-        
+    <Grid x:Name="GRIDroot"
+          Background="{StaticResource BgAcrylicBrush}">
+        <Grid x:Name="GRIDtitle"
+              VerticalAlignment="Top"
+              HorizontalAlignment="Stretch"
+              Height="24"
+              Background="Transparent">
+            
+        </Grid>
     </Grid>
 </Page>

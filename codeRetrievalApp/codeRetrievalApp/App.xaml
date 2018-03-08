@@ -4,5 +4,18 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:codeRetrievalApp"
     RequestedTheme="Light">
-
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.ThemeDictionaries>
+                <ResourceDictionary x:Key="Light">
+                    <SolidColorBrush x:Key="TitleBackground" 
+                                     Color="#00FFFFFF"/>
+                    <AcrylicBrush x:Key="BgAcrylicBrush"
+                                  BackgroundSource="HostBackdrop"
+                                  TintOpacity="0"
+                                  FallbackColor="#00000000"/>
+                </ResourceDictionary>
+            </ResourceDictionary.ThemeDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
 </Application>
