@@ -54,19 +54,20 @@
         </Storyboard>
     </UserControl.Resources>
 
-    <Grid Height="70"
-          GotFocus="Grid_GotFocus">
+    <Grid Height="70">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="30"/>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="30"/>
+            <ColumnDefinition Width="55"/>
         </Grid.ColumnDefinitions>
         <Border Background="White"
-                Margin="5,7"
+                Margin="50,5,0,5"
                 Padding="5"
                 CornerRadius="15"
-                Grid.Column="1"
-                Tapped="Border_Tapped">
+                Tapped="Border_Tapped"
+                HorizontalAlignment="Stretch"
+                RelativePanel.AlignLeftWithPanel="True"
+                x:Name="BDbox"
+                Grid.Column="0">
             <Grid>
                 <TextBlock x:Name="TXTBLKinput"
                            FontSize="35"
@@ -89,19 +90,16 @@
                                  RotationX="0"/>
             </Border.Projection>
         </Border>
-        <Grid Grid.Column="2">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-            <local:LevelControl Grid.Row="0"
+        <StackPanel Grid.Column="1">
+            
+            <local:LevelControl 
                                 Visibility="Collapsed"
                                 x:Name="CTRLlv">
             </local:LevelControl>
-            <local:AssociateControl Grid.Row="1"
+            <local:AssociateControl 
                                     Visibility="Collapsed"
                                     x:Name="CTRLas">
             </local:AssociateControl>
-        </Grid>
+        </StackPanel>
     </Grid>
 </UserControl>

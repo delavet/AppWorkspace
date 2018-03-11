@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.UI.Xaml.Controls;
 
 namespace codeRetrievalApp.Lib
 {
@@ -20,5 +21,6 @@ namespace codeRetrievalApp.Lib
                 _mainPage = value;
             }
         }
+        public static Frame rootFrame;
     }
 }

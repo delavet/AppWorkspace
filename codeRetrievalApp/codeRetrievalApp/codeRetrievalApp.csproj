@@ -104,9 +104,18 @@
     <Compile Include="Controls\LevelControl.xaml.cs">
       <DependentUpon>LevelControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Lib\CodeInfo.cs" />
+    <Compile Include="Lib\CodeList.cs" />
     <Compile Include="Lib\Constants.cs" />
+    <Compile Include="Lib\Delegates.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\CodeDetailPage.xaml.cs">
+      <DependentUpon>CodeDetailPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\SearchResultPage.xaml.cs">
+      <DependentUpon>SearchResultPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -146,6 +155,14 @@
     <Page Include="MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\CodeDetailPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\SearchResultPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>

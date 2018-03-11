@@ -23,10 +23,27 @@
         </Grid>
         <Grid x:Name="GRIDcontent"
               Grid.Row="1">
+            
             <StackPanel x:Name="STKPNinput"
                         Margin="20,0">
-                
             </StackPanel>
+            <Button x:Name="BTNsearch"
+                    Margin="20"
+                    Style="{StaticResource ButtonRevealStyle}"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Bottom"
+                    Click="BTNsearch_Click"
+                    Background="Transparent">
+                <Border Width="60"
+                        Height="60"
+                        CornerRadius="30"
+                        BorderThickness="0.5">
+                    <FontIcon FontFamily="Segoe MDL2 Assets"
+                              Glyph="&#xE094;"
+                              FontSize="30"
+                              Foreground="White"/>
+                </Border>
+            </Button>
         </Grid>
     </Grid>
 </Page>

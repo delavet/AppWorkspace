@@ -32,11 +32,13 @@ namespace codeRetrievalApp.Controls
             button1.Content = "test1";
             button1.Margin = new Thickness(3);
             button1.Click += Button_Click;
+            button1.Style = (Style)Application.Current.Resources["ButtonRevealStyle"];
             Button button2 = new Button();
             button2.FontSize = 15;
             button2.Content = "test2";
             button2.Margin = new Thickness(3);
             button2.Click += Button_Click;
+            button2.Style = (Style)Application.Current.Resources["ButtonRevealStyle"];
             tempPanel.Children.Add(button1);
             tempPanel.Children.Add(button2);
             fly.Content = tempPanel;

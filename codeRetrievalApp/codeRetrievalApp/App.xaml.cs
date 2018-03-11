@@ -14,6 +14,8 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using codeRetrievalApp.Lib;
+using Windows.UI.Core;
 
 namespace codeRetrievalApp
 {
@@ -47,9 +49,10 @@ namespace codeRetrievalApp
             {
                 // 创建要充当导航上下文的框架，并导航到第一页
                 rootFrame = new Frame();
+                rootFrame.CacheSize = 4;
 
                 rootFrame.NavigationFailed += OnNavigationFailed;
-
+                rootFrame.Navigated += OnNavigated;
                 if (e.PreviousExecutionState == ApplicationExecutionState.Terminated)
                 {
                     //TODO: 从之前挂起的应用程序加载状态
@@ -57,6 +60,10 @@ namespace codeRetrievalApp
 
                 // 将框架放在当前窗口中
                 Window.Current.Content = rootFrame;
+                SystemNavigationManager.GetForCurrentView().BackRequested += OnBackrequested;
+                SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = rootFrame.CanGoBack ? AppViewBackButtonVisibility.Visible : AppViewBackButtonVisibility.Collapsed;
+
+                Constants.rootFrame = rootFrame;
             }
 
             if (e.PrelaunchActivated == false)
@@ -71,6 +78,22 @@ namespace codeRetrievalApp
                 // 确保当前窗口处于活动状态
                 Window.Current.Activate();
             }
+        }
+
+        private void OnBackrequested(object sender, BackRequestedEventArgs e)
+        {
+            Frame rootFrame = Window.Current.Content as Frame;
+            if (rootFrame != null && rootFrame.CanGoBack)
+            {
+                e.Handled = true;//这句一定要有，不然还会发生默认返回键操作
+                rootFrame.GoBack();
+            }
+
+        }
+
+        private void OnNavigated(object sender, NavigationEventArgs e)
+        {
+            SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = ((Frame)sender).CanGoBack ? AppViewBackButtonVisibility.Visible : AppViewBackButtonVisibility.Collapsed;
         }
 
         /// <summary>

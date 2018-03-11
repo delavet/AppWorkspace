@@ -16,6 +16,7 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using codeRetrievalApp.Lib;
 using codeRetrievalApp.Controls;
+using codeRetrievalApp.Pages;
 
 // https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x804 上介绍了“空白页”项模板
 
@@ -60,6 +61,11 @@ namespace codeRetrievalApp
             InputControl tempControl = new InputControl();
             STKPNinput.Children.Add(tempControl);
             last = tempControl;
+        }
+
+        private void BTNsearch_Click(object sender, RoutedEventArgs e)
+        {
+            Constants.rootFrame.Navigate(typeof(SearchResultPage));
         }
     }
 }
