@@ -1,0 +1,107 @@
+﻿<UserControl
+    x:Class="codeRetrievalApp.Controls.InputControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:codeRetrievalApp.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="300"
+    d:DesignWidth="400">
+    <UserControl.Resources>
+        <Storyboard x:Name="STRBDrt">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="PLANEinput"
+                                           Storyboard.TargetProperty="RotationX"
+                                           Duration="0:0:0.4">
+                <LinearDoubleKeyFrame KeyTime="0:0:0"
+                                      Value="90"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.4"
+                                      Value="0">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <QuinticEase EasingMode="EaseOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Name="STRBDrt1"
+                    Completed="STRBDrt1_Completed">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="PLANEinput"
+                                           Storyboard.TargetProperty="RotationX"
+                                           Duration="0:0:0.4">
+                <LinearDoubleKeyFrame KeyTime="0:0:0"
+                                      Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.4"
+                                      Value="90">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <QuinticEase EasingMode="EaseOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Name="STRBDrt2">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="PLANEinput"
+                                           Storyboard.TargetProperty="RotationX"
+                                           Duration="0:0:0.4">
+                <LinearDoubleKeyFrame KeyTime="0:0:0"
+                                      Value="90"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.4"
+                                      Value="0">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <QuinticEase EasingMode="EaseOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+    </UserControl.Resources>
+
+    <Grid Height="70"
+          GotFocus="Grid_GotFocus">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="30"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="30"/>
+        </Grid.ColumnDefinitions>
+        <Border Background="White"
+                Margin="5,7"
+                Padding="5"
+                CornerRadius="15"
+                Grid.Column="1"
+                Tapped="Border_Tapped">
+            <Grid>
+                <TextBlock x:Name="TXTBLKinput"
+                           FontSize="35"
+                           Text="+"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center" >
+                </TextBlock>
+                <TextBox x:Name="TXTBXinput"
+                         Style="{StaticResource MyTextBoxStyle}"
+                         FontSize="30"
+                         Visibility="Collapsed">
+                </TextBox>
+                
+            </Grid>
+            <Border.Projection>
+                <PlaneProjection x:Name="PLANEinput"
+                                 CenterOfRotationY="0"
+                                 CenterOfRotationZ="15"
+                                 CenterOfRotationX="0"
+                                 RotationX="0"/>
+            </Border.Projection>
+        </Border>
+        <Grid Grid.Column="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <local:LevelControl Grid.Row="0"
+                                Visibility="Collapsed"
+                                x:Name="CTRLlv">
+            </local:LevelControl>
+            <local:AssociateControl Grid.Row="1"
+                                    Visibility="Collapsed"
+                                    x:Name="CTRLas">
+            </local:AssociateControl>
+        </Grid>
+    </Grid>
+</UserControl>

@@ -14,6 +14,8 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using codeRetrievalApp.Lib;
+using codeRetrievalApp.Controls;
 
 // https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x804 上介绍了“空白页”项模板
 
@@ -24,6 +26,7 @@ namespace codeRetrievalApp
     /// </summary>
     public sealed partial class MainPage : Page
     {
+        private InputControl last = null;
         public MainPage()
         {
             this.InitializeComponent();
@@ -40,7 +43,23 @@ namespace codeRetrievalApp
             coreTitleBar.ExtendViewIntoTitleBar = true;
             appTitleBar.ButtonBackgroundColor = Colors.Transparent;
             Window.Current.SetTitleBar(GRIDtitle);
-            
+            AddNewControl();
+            Constants.mainPage = this;
+        }
+
+        public void AddInput(String inputStr)
+        {
+            last.changeForm(inputStr);
+            InputControl tempControl = new InputControl();
+            STKPNinput.Children.Add(tempControl);
+            last = tempControl;
+        }
+
+        public void AddNewControl()
+        {
+            InputControl tempControl = new InputControl();
+            STKPNinput.Children.Add(tempControl);
+            last = tempControl;
         }
     }
 }

@@ -5,6 +5,7 @@
     xmlns:local="using:codeRetrievalApp"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="using:codeRetrievalApp.Controls"
     mc:Ignorable="d">
 
     <Grid x:Name="GRIDroot"
@@ -22,13 +23,10 @@
         </Grid>
         <Grid x:Name="GRIDcontent"
               Grid.Row="1">
-            <Canvas Height="200"
-                    Width="350" 
-                    VerticalAlignment="Top" 
-                    Margin="0,25,0,0"
-                    Background="Yellow"
-                    Opacity="0.7">
-            </Canvas>
+            <StackPanel x:Name="STKPNinput"
+                        Margin="20,0">
+                
+            </StackPanel>
         </Grid>
     </Grid>
 </Page>
