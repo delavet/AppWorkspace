@@ -7,4 +7,6 @@ namespace codeRetrievalApp.Lib
 {
     delegate void DataLoadingEventHandler();
     delegate void DataLoadedEventHandler();
+    public delegate void AssociateKeyWordsHandler(String keyword);
+    public delegate void KeywordInputCompleteHandler();
 }
