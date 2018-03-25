@@ -43,12 +43,7 @@ namespace codeRetrievalApp.Controls
 
         private void Border_Tapped(object sender, TappedRoutedEventArgs e)
         {
-            if (!showing)
-            {
-                showing = true;
-                STRBDrt1.Begin();
-                Constants.mainPage.AddNewControl();
-            }
+            
         }
 
         public void changeForm(String inputStr)

@@ -93,11 +93,14 @@ namespace codeRetrievalApp.Lib
 
         private async Task<List<CodeInfo>> execute_load_more()
         {
+            var testCode = "public class TableRowHeaderTest {		    public static void main(String[] args) {	        new TableRowHeaderTest();	    }		    public TableRowHeaderTest() {	        EventQueue.invokeLater(new Runnable() {	            @Override	            public void run() {	                try {	                    UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());	                } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex)...";
+            var testPost = "How can i display my Jtable to this .., , ,currently i only know to create this kind of jtable , , ,below is my code, ,HERE, , ,This is a proof of concept only, ,Disclaimer:, Before I get a bunch of hate mail about the, obviously, horrible things I've done to make this work, I stole most of the painting code straight out of the source, this is how it's actually done within the look and feel code itself :P, ,I've also gone to the nth degree, meaning that I've literally...";
+            var testTitle = "How to Display Row Header on JTable Instead of Column Header";
             List<CodeInfo> more_infos = new List<CodeInfo>();
             HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, new Uri("http://www.baidu.com"));
             for (int i = 0; i < 10; i++)
             {
-                more_infos.Add(new CodeInfo("testCode", "testPost", "testTitle"));
+                more_infos.Add(new CodeInfo(testCode, testPost, testTitle));
             }
             return more_infos;
         }

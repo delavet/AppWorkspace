@@ -9,39 +9,49 @@
 
     <Grid Background="{ThemeResource SystemControlAcrylicWindowBrush}">
         <Grid.RowDefinitions>
-            <RowDefinition Height="24"/>
-            <RowDefinition Height="50"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="70"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
+
+        <Grid Grid.Row="1"
+              x:Name="GRIDpost">
+            <WebView
+                x:Name="WEBpost"
+                DOMContentLoaded="WEBpost_DOMContentLoaded"
+                LongRunningScriptDetected="WEBpost_LongRunningScriptDetected"
+                ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                NavigationCompleted="WEBpost_NavigationCompleted"/>
+
+        </Grid>
         <Grid x:Name="GRIDtitle"
-              VerticalAlignment="Top"
+              VerticalAlignment="Stretch"
               HorizontalAlignment="Stretch"
-              Height="24"
-              Background="Transparent"
+              Background="{StaticResource SystemControlAccentAcrylicWindowAccentMediumHighBrush}"
               Grid.Row="0">
-        </Grid>
-        <Grid Grid.Row="1">
-            <TextBlock x:Name="TXTBLKtitle"
-                       HorizontalAlignment="Center"
-                       VerticalAlignment="Center"/>
-        </Grid>
-        <TextBlock x:Name="TXTBLKcode"
-                   Margin="5"
-                   Grid.Row="2"/>
-        <Grid Grid.Row="3">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="30"/>
-            </Grid.RowDefinitions>
-            <TextBlock x:Name="TXTBLKpost"
-                   Margin="5"/>
-            <Button Content="copy to clipboard"
-                    Style="{StaticResource ButtonRevealStyle}"
-                    Click="Button_Click"
-                    HorizontalAlignment="Center"
-                    Grid.Row="1"
-                    VerticalAlignment="Center"/>
+            <TextBlock
+                    x:Name="TXTBLKtitle"
+                    VerticalAlignment="Center"
+                    FontSize="30"
+                    FontWeight="Bold"
+                    Foreground="Black"
+                    Margin="25,0,0,0"
+                    Text="Result"  />
         </Grid>
     </Grid>
+    <Page.BottomAppBar>
+        <CommandBar
+            x:Name="BARbottom"
+            Background="{StaticResource SystemControlAcrylicWindowBrush}">
+            <AppBarButton
+                x:Name="BTNsource"
+                Label="view source"
+                Icon="WebCam"
+                Click="BTNsource_Click"/>
+            <AppBarButton
+                x:Name="BTNcode"
+                Label="edit code"
+                Icon="Edit"
+                Click="BTNcode_Click"/>
+        </CommandBar>
+    </Page.BottomAppBar>
 </Page>

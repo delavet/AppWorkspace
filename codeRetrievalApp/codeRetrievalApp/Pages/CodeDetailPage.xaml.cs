@@ -34,24 +34,77 @@ namespace codeRetrievalApp.Pages
         {
             Window.Current.SetTitleBar(GRIDtitle);
             var connectedAnimation = ConnectedAnimationService.GetForCurrentView().GetAnimation("controlAnimation");
+            var connectedPostAnimation = ConnectedAnimationService.GetForCurrentView().GetAnimation("postAnimation");
             if (connectedAnimation != null)
             {
-                connectedAnimation.TryStart(TXTBLKtitle, new UIElement[] { TXTBLKcode, TXTBLKpost });
+                connectedAnimation.TryStart(GRIDtitle, new UIElement[] {  });
+                connectedPostAnimation.TryStart(GRIDpost, new UIElement[] { });
             }
             if(e.Parameter!=null && e.Parameter is CodeInfo)
             {
                 var info = e.Parameter as CodeInfo;
-                TXTBLKcode.Text = info.code;
-                TXTBLKpost.Text = info.post;
-                TXTBLKtitle.Text = info.title;
+                TXTBLKtitle.Text = info.title; 
+            }
+           
+            WEBpreprocess();
+            
+        }
+        
+        private async void WEBpreprocess()
+        {
+            try
+            {
+                WEBpost.Navigate(new Uri("https://stackoverflow.com/questions/26248084"));
+                
+            }
+            catch
+            {
+                return;
+            }
+            finally
+            {
+                
             }
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             DataPackage dataPackage = new DataPackage();
-            dataPackage.SetText(TXTBLKcode.Text);
+            //dataPackage.SetText(TXTBLKcode.Text);
             Clipboard.SetContent(dataPackage);
+        }
+
+        private async void WEBpost_NavigationCompleted(WebView sender, WebViewNavigationCompletedEventArgs args)
+        {
+            string js = "";
+            js += "var child=document.getElementById('sidebar');";
+            js += "child.parentNode.removeChild(child);";
+            js += "var banner=document.getElementById('announcement-banner')";
+            js += "banner.parentNode.removeChild(child);";
+            js += "var f=document.getElementById('post-form');";
+            js += "child.parentNode.removeChild(f);";
+            await WEBpost.InvokeScriptAsync("eval", new string[] { js });
+
+        }
+
+        private void BTNsource_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BTNcode_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void WEBpost_LongRunningScriptDetected(WebView sender, WebViewLongRunningScriptDetectedEventArgs args)
+        {
+            args.StopPageScriptExecution = true;
+        }
+
+        private async void WEBpost_DOMContentLoaded(WebView sender, WebViewDOMContentLoadedEventArgs args)
+        {
+            
         }
     }
 }

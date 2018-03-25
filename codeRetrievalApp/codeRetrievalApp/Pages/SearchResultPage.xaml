@@ -5,6 +5,7 @@
     xmlns:local="using:codeRetrievalApp.Pages"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="using:codeRetrievalApp.Controls"
     mc:Ignorable="d"
     xmlns:Lib="using:codeRetrievalApp.Lib">
     <Page.Resources>
@@ -26,26 +27,30 @@
         </Storyboard>
     </Page.Resources>
 
-    <Grid Background="{StaticResource BgAcrylicBrush}">
-        <Grid x:Name="GRIDtitle"
-              VerticalAlignment="Top"
-              HorizontalAlignment="Stretch"
-              Height="24"
-              Background="Transparent"
-              Grid.Row="0">
-        </Grid>
-        <Grid Background="{ThemeResource SystemControlAcrylicWindowBrush}"
-              SizeChanged="Grid_SizeChanged"
-              x:Name="GRIDroot">
+    <Grid Background="WhiteSmoke">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+        <Grid 
+             SizeChanged="Grid_SizeChanged"
+              x:Name="GRIDroot"
+              Grid.Row="0"
+              Grid.RowSpan="2">
             <Grid.RenderTransform>
                 <TranslateTransform x:Name="TRANSroot"/>
             </Grid.RenderTransform>
             <GridView x:Name="GRIDVWcode"
-                      HorizontalAlignment="Center"
+                      Margin="0,70,0,0"
+                      HorizontalAlignment="Stretch"
                       SelectionMode="None"
                       IsItemClickEnabled="True"
                       ScrollViewer.VerticalScrollBarVisibility="Hidden"
                       ItemClick="GRIDVWcode_ItemClick"
+                      ItemContainerTransitions="{x:Null}"
+                      Loaded="GRIDVWcode_Loaded"
+                      ContainerContentChanging="GRIDVWcode_ContainerContentChanging"
                       >
                 <GridView.ItemContainerStyle>
                     <Style TargetType="GridViewItem">
@@ -57,35 +62,77 @@
                 </GridView.ItemContainerStyle>
                 <GridView.ItemTemplate>
                     <DataTemplate x:DataType="Lib:CodeInfo">
-                        <Border CornerRadius="12"
-                                Background="White"
-                                Margin="5"
-                                x:Name="controlRoot">
-                            <Grid Margin="0,5,0,3">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="20"/>
-                                    <RowDefinition Height="100"/>
-                                </Grid.RowDefinitions>
-                                <TextBlock Grid.Row="0"
-                                           Text="{x:Bind title}"
-                                           HorizontalAlignment="Center"
-                                           />
-                                <Grid Grid.Row="1">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*"/>
-                                        <ColumnDefinition Width="*"/>
-                                    </Grid.ColumnDefinitions>
-                                    <TextBlock Grid.Column="0"
-                                               Text="{x:Bind code}"/>
-                                    <TextBlock Grid.Column="1"
-                                               Text="{x:Bind post}"/>
+                        <Grid
+                            x:Name="RootGrid"
+                            CanDrag="False"
+                            Loaded="RootGrid_Loaded"
+                            SizeChanged="RootGrid_SizeChanged"
+                            Tapped="RootGrid_Tapped"
+                            Unloaded="RootGrid_Unloaded"
+                            MinHeight="400">
+                            <Border
+                                x:Name="BDmask"/>
+                            <Border
+                                x:Name="BDpost">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="40"/>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+                                    <StackPanel
+                                        Grid.Row="0"
+                                        Orientation="Horizontal">
+                                        <Rectangle
+                                            Height="26"
+                                            Width="4"
+                                            Fill="{StaticResource SystemControlAccentDark1AcrylicWindowAccentDark1Brush}"/>
+                                        <TextBlock
+                                            x:Name="TXTBLKtitle"
+                                            Text="{x:Bind title}"
+                                            FontWeight="Bold"
+                                            FontSize="28"
+                                            TextWrapping="Wrap"
+                                            Margin="15,0,0,0"/>
+                                    </StackPanel>
+                                    <TextBlock
+                                    x:Name="TXTBLKpost"
+                                    Text="{x:Bind post}"
+                                    FontWeight="Light"
+                                    FontSize="23"
+                                        Grid.Row="1"
+                                        Margin="15"
+                                        TextWrapping="Wrap"/>
                                 </Grid>
-                            </Grid>
-                        </Border>
+                            </Border>
+                            <Border
+                                x:Name="BDcode">
+                                <TextBlock
+                                    x:Name="TXTBLKcode"
+                                    Text="{x:Bind code}"
+                                    FontWeight="Light"
+                                    FontSize="23"
+                                    TextWrapping="Wrap"
+                                    Margin="15"/>
+                            </Border>
+                        </Grid>
                     </DataTemplate>
                 </GridView.ItemTemplate>
-                
+
             </GridView>
+        </Grid>
+        <Grid x:Name="GRIDtitle"
+              VerticalAlignment="Stretch"
+              HorizontalAlignment="Stretch"
+              Background="{ThemeResource SystemControlAcrylicWindowBrush}"
+              Grid.Row="0">
+            <TextBlock
+                    x:Name="TXTBLKtitle"
+                    VerticalAlignment="Center"
+                    FontSize="30"
+                    FontWeight="Bold"
+                    Foreground="Black"
+                    Margin="25,0,0,0"
+                    Text="Result"  />
         </Grid>
     </Grid>
 </Page>

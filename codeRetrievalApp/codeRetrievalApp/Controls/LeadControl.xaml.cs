@@ -1,10 +1,14 @@
-﻿using System;
+﻿using codeRetrievalApp.Lib;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Numerics;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.Composition;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -12,24 +16,20 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-using codeRetrievalApp.Lib;
-using Windows.UI.Composition;
-using System.Threading.Tasks;
-using System.Numerics;
 
 // The User Control item template is documented at https://go.microsoft.com/fwlink/?LinkId=234236
 
 namespace codeRetrievalApp.Controls
 {
-    public sealed partial class AssociateControl : UserControl
+    public sealed partial class LeadControl : UserControl
     {
         public bool IsShown { get; set; }
         private Compositor _compositor;
         private Visual _detailContentGridVisual;
-        private FrameworkElement _kwItem;
-        private Visual _kwItemVisual;
+        private FrameworkElement _kwItem = null;
+        private Visual _kwItemVisual = null;
 
-        public AssociateControl()
+        public LeadControl()
         {
             InitializeComponent();
             InitComposition();
@@ -45,7 +45,6 @@ namespace codeRetrievalApp.Controls
 
         public async void Show(FrameworkElement KeywordItem, String Keyword)
         {
-            TXTBLKkw.Text = Keyword;
             _kwItem = KeywordItem;
             _kwItemVisual = _kwItem.GetVisual();
             Visibility = Visibility.Visible;
@@ -85,7 +84,6 @@ namespace codeRetrievalApp.Controls
 
         private async Task ToggleKwItemAnimationAsync(bool show)
         {
-            _kwItemVisual.Opacity = 0f;
 
             var targetSize = GetTargetSize();
             var targetPosition = GetTargetPosition();
@@ -147,12 +145,44 @@ namespace codeRetrievalApp.Controls
             innerBatch.End();
         }
 
+        private void FlipView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            switch (FLPVW.SelectedIndex)
+            {
+                case 0:
+                    {
+                        T2.lead();
+                        KW1.quitLead1();
+                    }break;
+                case 1:
+                    {
+                        T2.quitLead();
+                        KW1.lead1();
+                    }break;
+                case 2:
+                    {
+                        T2.quitLead();
+                        KW1.quitLead1();
+                        KW2.lead2();
+                    }break;
+                default:
+                    break;
+            }
+        }
 
         private async void BTNcancel_Click(object sender, RoutedEventArgs e)
         {
-
             await DoHideListAsync();
-            
+        }
+
+        private void T2_ShowAssociates(FrameworkElement kwItem, string keyword)
+        {
+
+        }
+
+        private void KW1_KeywordComplete()
+        {
+
         }
     }
 }

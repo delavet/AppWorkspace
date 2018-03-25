@@ -9,12 +9,38 @@
     d:DesignHeight="300"
     d:DesignWidth="400">
 
-    <Grid>
+    <Grid x:Name="DetailContentGrid">
         <Border x:Name="BDcore"
-                Tapped="BDcore_Tapped"
-                Height="10"
-                Width="10"
-                CornerRadius="5"
-                Background="White"/>
+                CornerRadius="10"
+                Background="{StaticResource SystemControlAccentAcrylicElementAccentMediumHighBrush}">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="64"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <TextBlock
+                    x:Name="TXTBLKkw"
+                    VerticalAlignment="Center"
+                    FontSize="25"
+                    FontWeight="Bold"
+                    Foreground="White"
+                    Text="Unknown" 
+                    Margin="20,0,0,0" />
+                <Button
+                    x:Name="BTNcancel"
+                    Width="64"
+                    Height="64"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Bottom"
+                    Click="BTNcancel_Click"
+                    Background="Transparent"
+                    Style="{StaticResource ButtonRevealStyle}">
+                        <SymbolIcon
+                             x:Name="CancelIcon"
+                            Foreground="White"
+                            Symbol="Cancel" />
+                </Button>
+            </Grid>
+        </Border>
     </Grid>
 </UserControl>

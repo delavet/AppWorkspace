@@ -147,7 +147,7 @@ namespace codeRetrievalApp.Controls
             {
                 if (ShowAssociates != null)
                 {
-                    ShowAssociates(Keyword);
+                    ShowAssociates(this,Keyword);
                 }
             }
         }
@@ -155,6 +155,33 @@ namespace codeRetrievalApp.Controls
         private void BTNhint_GotFocus(object sender, RoutedEventArgs e)
         {
             SetFocus();
+        }
+
+        public void input(String str)
+        {
+            TXTBXkword.Text += str;
+        }
+
+        public void lead1()
+        {
+            SetFocus();
+            TXTBXkword.Text = "java";
+            STRBDlead1.Begin();
+        }
+
+        public void quitLead1()
+        {
+            STRBDlead1.Stop();
+        }
+
+        private void STRBDlead1_Completed(object sender, object e)
+        {
+            STRBDlead1.Begin();
+        }
+
+        public void lead2()
+        {
+
         }
     }
 }

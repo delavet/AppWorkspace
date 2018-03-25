@@ -27,13 +27,14 @@ namespace codeRetrievalApp
     /// </summary>
     public sealed partial class MainPage : Page
     {
-        private InputControl last = null;
         public MainPage()
         {
             this.InitializeComponent();
+            /*
             ApplicationView.GetForCurrentView().SetPreferredMinSize(new Size(400, 750));
             ApplicationView.PreferredLaunchViewSize = new Size(400, 750);
             ApplicationView.PreferredLaunchWindowingMode = ApplicationViewWindowingMode.PreferredLaunchViewSize;
+            */
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -44,23 +45,15 @@ namespace codeRetrievalApp
             coreTitleBar.ExtendViewIntoTitleBar = true;
             appTitleBar.ButtonBackgroundColor = Colors.Transparent;
             Window.Current.SetTitleBar(GRIDtitle);
-            AddNewControl();
             Constants.mainPage = this;
+            //LEAD.Visibility = Visibility.Visible;
+            //LEAD.Show(T2input, "");
         }
 
-        public void AddInput(String inputStr)
+        private void T2input_ShowAssociates(FrameworkElement kwItem, string keyword)
         {
-            last.changeForm(inputStr);
-            InputControl tempControl = new InputControl();
-            STKPNinput.Children.Add(tempControl);
-            last = tempControl;
-        }
-
-        public void AddNewControl()
-        {
-            InputControl tempControl = new InputControl();
-            STKPNinput.Children.Add(tempControl);
-            last = tempControl;
+            Asso.Visibility = Visibility.Visible;
+            Asso.Show(kwItem, keyword);
         }
 
         private void BTNsearch_Click(object sender, RoutedEventArgs e)

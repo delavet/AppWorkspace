@@ -11,15 +11,30 @@
     PointerEntered="BTNcore_PointerEntered"
     PointerExited="BTNcore_PointerExited"
     GotFocus="UserControl_GotFocus"
-    LostFocus="UserControl_LostFocus">
+    LostFocus="UserControl_LostFocus"
+    Tapped="BTNhint_Tapped">
+    <UserControl.Resources>
+        <Storyboard 
+            x:Name="STRBDlead1"
+            Completed="STRBDlead1_Completed">
+            <ColorAnimation Storyboard.TargetName="BRSHbg"
+                            Storyboard.TargetProperty="Color"
+                            From="#1f2f2f2f"
+                            To="Red"
+                            Duration="0:0:0.5"/>
+        </Storyboard>
+    </UserControl.Resources>
 
     <Grid>
         <Border x:Name="BDbg"
                 HorizontalAlignment="Stretch"
                 VerticalAlignment="Stretch"
-                Background="#1f2f2f2f"
                 CornerRadius="10"
-                Opacity="0"/>
+                Opacity="0">
+            <Border.Background>
+                <SolidColorBrush x:Name="BRSHbg">#1f2f2f2f</SolidColorBrush>
+            </Border.Background>
+        </Border>
         <Border x:Name="BDcore"
                 HorizontalAlignment="Stretch"
                 VerticalAlignment="Stretch"
@@ -40,12 +55,12 @@
                          TextChanged="TXTBXkword_TextChanged"
                          Style="{StaticResource MyTextBoxStyle}"
                          FontSize="20"
+                         IsTapEnabled="True"
                          KeyDown="TXTBXkword_KeyDown"/>
                     <TextBlock x:Name="BTNhint"
                             Text="hint"
                             FontSize="20"
                             VerticalAlignment="Center"
-                            Tapped="BTNhint_Tapped"
                             Margin="1,1,5,1"
                             GotFocus="BTNhint_GotFocus"/>
                 </StackPanel>

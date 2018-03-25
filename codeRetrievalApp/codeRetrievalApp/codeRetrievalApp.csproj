@@ -111,18 +111,26 @@
     <Compile Include="Controls\KeywordControl.xaml.cs">
       <DependentUpon>KeywordControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\LeadControl.xaml.cs">
+      <DependentUpon>LeadControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\LevelControl.xaml.cs">
       <DependentUpon>LevelControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Lib\CodeInfo.cs" />
     <Compile Include="Lib\CodeList.cs" />
+    <Compile Include="Lib\CompositionAnimationBuilder.cs" />
     <Compile Include="Lib\Constants.cs" />
     <Compile Include="Lib\Delegates.cs" />
+    <Compile Include="Lib\Util.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\CodeDetailPage.xaml.cs">
       <DependentUpon>CodeDetailPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\LeadPage.xaml.cs">
+      <DependentUpon>LeadPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\SearchResultPage.xaml.cs">
       <DependentUpon>SearchResultPage.xaml</DependentUpon>
@@ -169,6 +177,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Controls\LeadControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\LevelControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -181,6 +193,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\LeadPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\SearchResultPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -188,6 +204,10 @@
     <Page Include="Pages\TestPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <ItemGroup>
