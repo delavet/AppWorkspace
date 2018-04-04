@@ -5,6 +5,7 @@
     xmlns:local="using:codeRetrievalApp.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ms="using:Microsoft.Toolkit.Uwp.UI.Controls"
     mc:Ignorable="d"
     d:DesignHeight="300"
     d:DesignWidth="400">
@@ -35,12 +36,24 @@
                     Click="BTNcancel_Click"
                     Background="Transparent"
                     Style="{StaticResource ButtonRevealStyle}">
-                        <SymbolIcon
+                    <SymbolIcon
                              x:Name="CancelIcon"
                             Foreground="White"
                             Symbol="Cancel" />
                 </Button>
+                <Grid x:Name="GRIDcontent"
+              Grid.Row="1">
+                    <ms:WrapPanel Orientation="Horizontal"
+                          x:Name="WPPNasso">
+
+                    </ms:WrapPanel>
+                    <local:MyProgressBar x:Name="PRGRS"
+                                 HorizontalAlignment="Stretch"
+                                 VerticalAlignment="Top"/>
+                </Grid>
             </Grid>
+            
         </Border>
+        
     </Grid>
 </UserControl>

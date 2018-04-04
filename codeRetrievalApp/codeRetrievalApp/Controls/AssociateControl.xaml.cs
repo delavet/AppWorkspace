@@ -16,6 +16,7 @@ using codeRetrievalApp.Lib;
 using Windows.UI.Composition;
 using System.Threading.Tasks;
 using System.Numerics;
+using Windows.Data.Json;
 
 // The User Control item template is documented at https://go.microsoft.com/fwlink/?LinkId=234236
 
@@ -50,6 +51,35 @@ namespace codeRetrievalApp.Controls
             _kwItemVisual = _kwItem.GetVisual();
             Visibility = Visibility.Visible;
             await ToggleKwItemAnimationAsync(true);
+            PRGRS.ProgressStart();
+            await InnerShow(Keyword);
+            PRGRS.ProgressEnd();
+        }
+
+
+        private async Task InnerShow(String k)
+        {
+            String json = "{\"keyword\":\"" + k + "\"}";
+            var param = await WebConnection.Connect_by_json("http://127.0.0.1:8000/asso", json);
+            if (!param.name.Equals("200")) return;
+            JsonObject jsonObject = JsonObject.Parse(param.value);
+            String message = jsonObject.GetNamedString("message");
+            if (!message.Equals("success")) return;
+            JsonArray array = jsonObject.GetNamedArray("result");
+            foreach(var a in array)
+            {
+                String assoWord = a.GetString();
+                Button btn = new Button();
+                btn.Content = assoWord;
+                btn.Click += Button_Click;
+                btn.Margin = new Thickness(5);
+                WPPNasso.Children.Add(btn);
+            }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         public Vector2 GetTargetSize()
@@ -150,7 +180,7 @@ namespace codeRetrievalApp.Controls
 
         private async void BTNcancel_Click(object sender, RoutedEventArgs e)
         {
-
+            WPPNasso.Children.Clear();
             await DoHideListAsync();
             
         }

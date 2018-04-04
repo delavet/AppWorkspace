@@ -17,6 +17,7 @@ using Windows.UI.Xaml.Hosting;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using codeRetrievalApp.Lib;
 
 // https://go.microsoft.com/fwlink/?LinkId=234238 上介绍了“空白页”项模板
 
@@ -35,26 +36,27 @@ namespace codeRetrievalApp.Pages
             this.InitializeComponent();
             this._compositor = ElementCompositionPreview.GetElementVisual(this).Compositor;
             this._listVisual = GRIDVWcode.GetVisual();
-            codeList = new CodeList();
-            codeList.DataLoaded += DataLoaded;
-            codeList.DataLoading += DataLoading;
-            GRIDVWcode.ItemsSource = codeList;
+            
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             Window.Current.SetTitleBar(GRIDtitle);
+            codeList = new CodeList(e.Parameter as String);
+            codeList.DataLoaded += DataLoaded;
+            codeList.DataLoading += DataLoading;
+            GRIDVWcode.ItemsSource = codeList;
             STRBDpopin.Begin();
         }
 
         private void DataLoading()
         {
-            
+            PRGRS.ProgressStart();
         }
 
         private void DataLoaded()
         {
-
+            PRGRS.ProgressEnd();
         }
 
         private void GRIDVWcode_ItemClick(object sender, ItemClickEventArgs e)
@@ -67,7 +69,7 @@ namespace codeRetrievalApp.Pages
                 gridView.PrepareConnectedAnimation("controlAnimation", item, "TXTBLKtitle");
                 gridView.PrepareConnectedAnimation("postAnimation", item, "TXTBLKpost");
             }
-            this.Frame.Navigate(typeof(CodeDetailPage), e.ClickedItem);
+            this.Frame.Navigate(typeof(CodeDetailPage), item);
         }
 
 

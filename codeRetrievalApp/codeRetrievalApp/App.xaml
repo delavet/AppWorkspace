@@ -8,6 +8,10 @@
         <ResourceDictionary>
             <ResourceDictionary.ThemeDictionaries>
                 <ResourceDictionary x:Key="Light">
+                    <SolidColorBrush x:Key="MicroSoftRed" Color="#AFF65314"/>
+                    <SolidColorBrush x:Key="MicroSoftGreen" Color="#AF7CBB00"/>
+                    <SolidColorBrush x:Key="MicroSoftBlue" Color="#AF00A1F1"/>
+                    <SolidColorBrush x:Key="MicroSoftYellow" Color="#AFFFBB00"/>
                     <SolidColorBrush x:Key="Lv1Color"
                                      Color="White"/>
                     <SolidColorBrush x:Key="Lv2Color"

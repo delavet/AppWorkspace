@@ -23,6 +23,18 @@ namespace codeRetrievalApp.Controls
 {
     public sealed partial class KeywordControl : UserControl
     {
+        public bool leading = false;
+        public bool Leading
+        {
+            get
+            {
+                return leading;
+            }
+            set
+            {
+                leading = value;
+            }
+        }
         private bool focused = false;
         public String Keyword
         {
@@ -137,6 +149,7 @@ namespace codeRetrievalApp.Controls
 
         private void UserControl_LostFocus(object sender, RoutedEventArgs e)
         {
+            if (leading) return;
             ReleaseFocus();
         }
 
@@ -181,7 +194,23 @@ namespace codeRetrievalApp.Controls
 
         public void lead2()
         {
+            STRBDlead2.Begin();
+        }
 
+        public void quitLead2()
+        {
+            STRBDlead2.Stop();
+            fgTXT.Color = Color.FromArgb(0xff, 1, 1, 1);
+        }
+
+        private void STRBDlead2_Completed(object sender, object e)
+        {
+            STRBDlead2.Begin();
+        }
+
+        public void reset()
+        {
+            TXTBXkword.Text = "";
         }
     }
 }

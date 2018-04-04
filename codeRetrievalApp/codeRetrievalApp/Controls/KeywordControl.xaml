@@ -16,8 +16,19 @@
     <UserControl.Resources>
         <Storyboard 
             x:Name="STRBDlead1"
-            Completed="STRBDlead1_Completed">
+            Completed="STRBDlead1_Completed"
+            AutoReverse="True">
             <ColorAnimation Storyboard.TargetName="BRSHbg"
+                            Storyboard.TargetProperty="Color"
+                            From="#1f2f2f2f"
+                            To="Red"
+                            Duration="0:0:0.5"/>
+        </Storyboard>
+        <Storyboard 
+            x:Name="STRBDlead2"
+            Completed="STRBDlead2_Completed"
+            AutoReverse="True">
+            <ColorAnimation Storyboard.TargetName="fgTXT"
                             Storyboard.TargetProperty="Color"
                             From="#1f2f2f2f"
                             To="Red"
@@ -62,7 +73,11 @@
                             FontSize="20"
                             VerticalAlignment="Center"
                             Margin="1,1,5,1"
-                            GotFocus="BTNhint_GotFocus"/>
+                            GotFocus="BTNhint_GotFocus">
+                        <TextBlock.Foreground>
+                            <SolidColorBrush Color="Black" x:Name="fgTXT"/>
+                        </TextBlock.Foreground>
+                    </TextBlock>
                 </StackPanel>
             </Grid>
         </Border>

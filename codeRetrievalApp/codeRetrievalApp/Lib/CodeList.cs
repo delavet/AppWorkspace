@@ -8,6 +8,8 @@ using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.UI.Popups;
 using Windows.UI.Xaml.Data;
+using codeRetrievalApp.Lib;
+using Windows.Data.Json;
 
 namespace codeRetrievalApp.Lib
 {
@@ -33,9 +35,17 @@ namespace codeRetrievalApp.Lib
             }
         }
 
+        private String q = "";
+
         public CodeList()
         {
             has_more_items = true;
+        }
+
+        public CodeList(String query)
+        {
+            has_more_items = true;
+            q = query;
         }
 
         public void do_fresh()
@@ -93,14 +103,42 @@ namespace codeRetrievalApp.Lib
 
         private async Task<List<CodeInfo>> execute_load_more()
         {
-            var testCode = "public class TableRowHeaderTest {		    public static void main(String[] args) {	        new TableRowHeaderTest();	    }		    public TableRowHeaderTest() {	        EventQueue.invokeLater(new Runnable() {	            @Override	            public void run() {	                try {	                    UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());	                } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex)...";
-            var testPost = "How can i display my Jtable to this .., , ,currently i only know to create this kind of jtable , , ,below is my code, ,HERE, , ,This is a proof of concept only, ,Disclaimer:, Before I get a bunch of hate mail about the, obviously, horrible things I've done to make this work, I stole most of the painting code straight out of the source, this is how it's actually done within the look and feel code itself :P, ,I've also gone to the nth degree, meaning that I've literally...";
-            var testTitle = "How to Display Row Header on JTable Instead of Column Header";
             List<CodeInfo> more_infos = new List<CodeInfo>();
-            HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, new Uri("http://www.baidu.com"));
-            for (int i = 0; i < 10; i++)
+            String json = "";
+            json += "{\"query\":\"";
+            json += q;
+            json += "\",\"page\":";
+            json += (current_page + 1).ToString();
+            json += "}";
+            var result = await WebConnection.Connect_by_json("http://127.0.0.1:8000/search", json);
+            if (!result.name.Equals("200")) return more_infos;
+            var ret_json = result.value;
+            try
             {
-                more_infos.Add(new CodeInfo(testCode, testPost, testTitle));
+                JsonObject jsonObject = JsonObject.Parse(ret_json);
+                String message = jsonObject.GetNamedString("message");
+                if (!message.Equals("success")) return more_infos;
+                JsonArray array = jsonObject.GetNamedArray("result");
+                foreach(var info in array)
+                {
+                    JsonObject obj = info.GetObject();
+                    String id = obj.GetNamedString("id");
+                    String title = obj.GetNamedString("title");
+                    String post = obj.GetNamedString("post");
+                    String code = obj.GetNamedString("code");
+                    if (title.Length > 50)
+                        title = title.Substring(0, 50) + "...";
+                    if (post.Length > 500)
+                        post = post.Substring(0, 500) + "...";
+                    if (code.Length > 500)
+                        code = code.Substring(0, 500) + "...";
+                    CodeInfo temp = new CodeInfo(code, post, title, int.Parse(id));
+                    more_infos.Add(temp);
+                }
+            }
+            catch
+            {
+                return more_infos;
             }
             return more_infos;
         }

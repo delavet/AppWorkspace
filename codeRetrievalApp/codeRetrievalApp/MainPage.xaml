@@ -6,7 +6,8 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:controls="using:codeRetrievalApp.Controls"
-    mc:Ignorable="d">
+    mc:Ignorable="d"
+    Loaded="Page_Loaded">
 
     <Grid x:Name="GRIDroot"
           Background="WhiteSmoke">
@@ -28,10 +29,30 @@
         </Grid>
         <Grid x:Name="GRIDcontent"
               Grid.Row="1">
-            <controls:InputT2Control
+            <StackPanel >
+                <controls:InputT2Control
                 x:Name="T2input"
                 ShowAssociates="T2input_ShowAssociates"
                 VerticalAlignment="Top"/>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock FontSize="20"
+                               Margin="5,0,10,0">
+                        language:
+                    </TextBlock>
+                    <ComboBox IsEnabled="False"
+                              PlaceholderText="java">
+                        <x:String>java</x:String>
+                    </ComboBox>
+                    <ComboBox 
+                              PlaceholderText="area your query belongs to"
+                        Margin="10,0,0,0">
+                        <x:String>graphic</x:String>
+                        <x:String>thread</x:String>
+                        <x:String>array</x:String>
+                        <x:String>database</x:String>
+                    </ComboBox>
+                </StackPanel>
+            </StackPanel>
             <controls:AssociateControl
                 x:Name="Asso"
                 Visibility="Collapsed"/>

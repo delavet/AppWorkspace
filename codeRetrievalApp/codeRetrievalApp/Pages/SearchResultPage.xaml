@@ -134,5 +134,10 @@
                     Margin="25,0,0,0"
                     Text="Result"  />
         </Grid>
+        <controls:MyProgressBar 
+            x:Name="PRGRS"
+            Grid.Row="1"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Top"/>
     </Grid>
 </Page>

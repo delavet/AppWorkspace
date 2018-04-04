@@ -30,11 +30,11 @@ namespace codeRetrievalApp
         public MainPage()
         {
             this.InitializeComponent();
-            /*
-            ApplicationView.GetForCurrentView().SetPreferredMinSize(new Size(400, 750));
-            ApplicationView.PreferredLaunchViewSize = new Size(400, 750);
+            
+            ApplicationView.GetForCurrentView().SetPreferredMinSize(new Size(1000, 750));
+            ApplicationView.PreferredLaunchViewSize = new Size(1000, 750);
             ApplicationView.PreferredLaunchWindowingMode = ApplicationViewWindowingMode.PreferredLaunchViewSize;
-            */
+            
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -58,7 +58,12 @@ namespace codeRetrievalApp
 
         private void BTNsearch_Click(object sender, RoutedEventArgs e)
         {
-            Constants.rootFrame.Navigate(typeof(SearchResultPage));
+            Constants.rootFrame.Navigate(typeof(SearchResultPage), T2input.Query);
+        }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            T2input.lead();
         }
     }
 }

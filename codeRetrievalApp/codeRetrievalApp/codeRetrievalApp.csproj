@@ -117,17 +117,26 @@
     <Compile Include="Controls\LevelControl.xaml.cs">
       <DependentUpon>LevelControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\MyProgressBar.xaml.cs">
+      <DependentUpon>MyProgressBar.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Lib\CodeInfo.cs" />
     <Compile Include="Lib\CodeList.cs" />
     <Compile Include="Lib\CompositionAnimationBuilder.cs" />
     <Compile Include="Lib\Constants.cs" />
+    <Compile Include="Lib\Cookies.cs" />
     <Compile Include="Lib\Delegates.cs" />
+    <Compile Include="Lib\Parameters.cs" />
     <Compile Include="Lib\Util.cs" />
+    <Compile Include="Lib\WebConnection.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\CodeDetailPage.xaml.cs">
       <DependentUpon>CodeDetailPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\CodeEditPage.xaml.cs">
+      <DependentUpon>CodeEditPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\LeadPage.xaml.cs">
       <DependentUpon>LeadPage.xaml</DependentUpon>
@@ -185,11 +194,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Controls\MyProgressBar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Pages\CodeDetailPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\CodeEditPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -211,6 +228,9 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="HtmlAgilityPack">
+      <Version>1.7.2</Version>
+    </PackageReference>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>6.0.8</Version>
     </PackageReference>

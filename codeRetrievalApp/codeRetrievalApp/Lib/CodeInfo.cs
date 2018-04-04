@@ -10,15 +10,29 @@ namespace codeRetrievalApp.Lib
 {
     class CodeInfo : INotifyPropertyChanged
     {
-        
+        private int id;
         private string _code;
         private string _post;
         private string _title;
-        public CodeInfo(String c, String p, String t)
+        
+        public CodeInfo(String c, String p, String t, int i)
         {
+            id = i;
             code = c;
             post = p;
             title = t;
+        }
+        public int ID
+        {
+            get
+            {
+                return id;
+            }
+            set
+            {
+                id = value;
+                OnPropertyChanged();
+            }
         }
         public String code
         {
