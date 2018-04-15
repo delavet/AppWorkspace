@@ -1,4 +1,5 @@
-﻿using System;
+﻿using codeRetrievalApp.Controls;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,5 +23,6 @@ namespace codeRetrievalApp.Lib
             }
         }
         public static Frame rootFrame;
+        public static BoxControl KWbox;
     }
 }

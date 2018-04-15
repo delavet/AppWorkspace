@@ -48,6 +48,17 @@ namespace codeRetrievalApp.Lib
             q = query;
         }
 
+        public CodeList(List<String> qList)
+        {
+            q = "";
+            foreach(var word in qList)
+            {
+                q = q + word + ",";
+            }
+            q = q.Substring(0, q.Length - 1);
+            has_more_items = true;
+        }
+
         public void do_fresh()
         {
             current_page = 0;
@@ -126,12 +137,13 @@ namespace codeRetrievalApp.Lib
                     String title = obj.GetNamedString("title");
                     String post = obj.GetNamedString("post");
                     String code = obj.GetNamedString("code");
+                    code = code.Replace('\t', '\n');
                     if (title.Length > 50)
                         title = title.Substring(0, 50) + "...";
-                    if (post.Length > 500)
-                        post = post.Substring(0, 500) + "...";
-                    if (code.Length > 500)
-                        code = code.Substring(0, 500) + "...";
+                    if (post.Length > 600)
+                        post = post.Substring(0, 600) + "...";
+                    if (code.Length > 200)
+                        code = code.Substring(0, 200) + "...";
                     CodeInfo temp = new CodeInfo(code, post, title, int.Parse(id));
                     more_infos.Add(temp);
                 }

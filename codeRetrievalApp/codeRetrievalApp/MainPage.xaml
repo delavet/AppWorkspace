@@ -20,7 +20,7 @@
               HorizontalAlignment="Stretch"
               Height="30"
               Grid.Row="0"
-              Background="LightGray">
+              Background="{StaticResource ThemeAcrylicBarBrush}">
             <TextBlock FontSize="20"
                        FontWeight="Light"
                        Foreground="White"
@@ -29,7 +29,7 @@
         </Grid>
         <Grid x:Name="GRIDcontent"
               Grid.Row="1">
-            <StackPanel >
+            <!--StackPanel >
                 <controls:InputT2Control
                 x:Name="T2input"
                 ShowAssociates="T2input_ShowAssociates"
@@ -52,31 +52,26 @@
                         <x:String>database</x:String>
                     </ComboBox>
                 </StackPanel>
-            </StackPanel>
+                
+            </-->
+            
+            <controls:InputT3Control
+                x:Name="T3input"
+               ShowAssociates="T3input_ShowAssociates" 
+                Search="T3input_Search"/>
             <controls:AssociateControl
                 x:Name="Asso"
                 Visibility="Collapsed"/>
+            <controls:BoxControl
+                x:Name="Box"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Bottom"
+                Margin="36,36,12,12"/>
             <!--controls:LeadControl
                 x:Name="LEAD"
                 Visibility="Collapsed"
                 /-->
-            <Button x:Name="BTNsearch"
-                    Margin="20"
-                    Style="{StaticResource ButtonRevealStyle}"
-                    HorizontalAlignment="Right"
-                    VerticalAlignment="Bottom"
-                    Click="BTNsearch_Click"
-                    Background="Transparent">
-                <Border Width="60"
-                        Height="60"
-                        CornerRadius="30"
-                        BorderThickness="0.5">
-                    <FontIcon FontFamily="Segoe MDL2 Assets"
-                              Glyph="&#xE094;"
-                              FontSize="30"
-                              Foreground="Black"/>
-                </Border>
-            </Button>
+            
         </Grid>
     </Grid>
 </Page>

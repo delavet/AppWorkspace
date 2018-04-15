@@ -9,25 +9,50 @@
     mc:Ignorable="d"
     d:DesignHeight="300"
     d:DesignWidth="400">
+    <UserControl.Resources>
+        <Storyboard x:Name="STRBDmask"
+                    Duration="0:0:0.4">
+            <DoubleAnimation From="0"
+                             To="1"
+                             Duration="0:0:0.4"
+                             Storyboard.TargetName="GRIDmask"
+                             Storyboard.TargetProperty="Opacity">
+                
+            </DoubleAnimation>
+        </Storyboard>
+        <Storyboard x:Name="STRBDunmask"
+                    Duration="0:0:0.4">
+            <DoubleAnimation From="1"
+                             To="0"
+                             Duration="0:0:0.4"
+                             Storyboard.TargetName="GRIDmask"
+                             Storyboard.TargetProperty="Opacity">
+                </DoubleAnimation>
+        </Storyboard>
+    </UserControl.Resources>
 
-    <Grid x:Name="DetailContentGrid">
-        <Border x:Name="BDcore"
-                CornerRadius="10"
-                Background="{StaticResource SystemControlAccentAcrylicElementAccentMediumHighBrush}">
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="64"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-                <TextBlock
+    <Grid>
+        <Grid x:Name="GRIDmask"
+              Background="#99000000">
+
+        </Grid>
+        <Grid x:Name="DetailContentGrid">
+            <Border x:Name="BDcore"
+                Background="{StaticResource BgAcrylicBrush}">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="64"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock
                     x:Name="TXTBLKkw"
                     VerticalAlignment="Center"
                     FontSize="25"
                     FontWeight="Bold"
-                    Foreground="White"
+                    Foreground="Black"
                     Text="Unknown" 
                     Margin="20,0,0,0" />
-                <Button
+                    <Button
                     x:Name="BTNcancel"
                     Width="64"
                     Height="64"
@@ -36,24 +61,33 @@
                     Click="BTNcancel_Click"
                     Background="Transparent"
                     Style="{StaticResource ButtonRevealStyle}">
-                    <SymbolIcon
+                        <SymbolIcon
                              x:Name="CancelIcon"
-                            Foreground="White"
+                            Foreground="Black"
                             Symbol="Cancel" />
-                </Button>
-                <Grid x:Name="GRIDcontent"
+                    </Button>
+                    <Grid x:Name="GRIDcontent"
               Grid.Row="1">
-                    <ms:WrapPanel Orientation="Horizontal"
+                        <ScrollViewer HorizontalScrollBarVisibility="Disabled"
+                                      HorizontalScrollMode="Disabled"
+                                      VerticalAlignment="Stretch"
+                                      HorizontalAlignment="Stretch"
+                                      VerticalScrollBarVisibility="Auto"
+                                      VerticalScrollMode="Auto">
+                            <ms:WrapPanel Orientation="Horizontal"
                           x:Name="WPPNasso">
 
-                    </ms:WrapPanel>
-                    <local:MyProgressBar x:Name="PRGRS"
+                            </ms:WrapPanel>
+                        </ScrollViewer>
+                        <local:MyProgressBar x:Name="PRGRS"
                                  HorizontalAlignment="Stretch"
                                  VerticalAlignment="Top"/>
+                    </Grid>
                 </Grid>
-            </Grid>
-            
-        </Border>
+
+            </Border>
+
+        </Grid>
         
     </Grid>
 </UserControl>

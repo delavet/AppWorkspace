@@ -1,0 +1,96 @@
+﻿<UserControl
+    x:Class="codeRetrievalApp.Controls.VarsControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:codeRetrievalApp.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="300"
+    d:DesignWidth="400">
+    <UserControl.Resources>
+        <Storyboard x:Name="STRBDpopin"
+                    Duration="0:0:0.5">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="TRANSroot"
+                                           Storyboard.TargetProperty="Y">
+                <LinearDoubleKeyFrame KeyTime="0:0:0"
+                                      Value="300"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.35"
+                                      Value="0">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <ExponentialEase EasingMode="EaseOut" Exponent="6"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimation Storyboard.TargetName="GRIDbg"
+                             Storyboard.TargetProperty="Opacity"
+                             From="0.3"
+                             To="1"
+                             Duration="0:0:0.35"/>
+
+        </Storyboard>
+        <Storyboard x:Name="STRBDpopout"
+                    Duration="0:0:0.5"
+                    Completed="STRBDpopout_Completed">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="TRANSroot"
+                                           Storyboard.TargetProperty="Y">
+                <LinearDoubleKeyFrame KeyTime="0:0:0"
+                                      Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.35"
+                                      Value="1000">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <ExponentialEase EasingMode="EaseOut" Exponent="6"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimation Storyboard.TargetName="GRIDbg"
+                             Storyboard.TargetProperty="Opacity"
+                             From="1"
+                             To="0"
+                             Duration="0:0:0.35"/>
+
+        </Storyboard>
+    </UserControl.Resources>
+
+    <Grid x:Name="GRIDroot"
+          Visibility="Collapsed">
+        <Grid Background="#99000000"
+              x:Name="GRIDbg"/>
+        <Grid>
+            <Grid.RenderTransform>
+                <TranslateTransform x:Name="TRANSroot"/>
+            </Grid.RenderTransform>
+            <local:Shadow Z_Depth="3"
+                      CornerRadius="0"
+                      HorizontalAlignment="Center"
+                      VerticalAlignment="Bottom"
+                      Margin="0,100,0,0"
+                      MaxWidth="700">
+                <Border
+                    Background="White">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="50"/>
+                        </Grid.RowDefinitions>
+                        <ScrollViewer x:Name="SCRvars"
+                              HorizontalScrollMode="Disabled"
+                              HorizontalScrollBarVisibility="Disabled">
+                            <StackPanel x:Name="STKPNvars">
+
+                            </StackPanel>
+                        </ScrollViewer>
+                        <Grid Grid.Row="1"
+                          >
+                            <Button x:Name="BTNconfirm"
+                                Click="BTNconfirm_Click"
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Center"
+                                Content="confirm changes"/>
+                        </Grid>
+                    </Grid>
+                </Border>
+            </local:Shadow>
+        </Grid>
+    </Grid>
+</UserControl>

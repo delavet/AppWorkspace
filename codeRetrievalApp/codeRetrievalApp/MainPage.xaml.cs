@@ -17,6 +17,7 @@ using Windows.UI.Xaml.Navigation;
 using codeRetrievalApp.Lib;
 using codeRetrievalApp.Controls;
 using codeRetrievalApp.Pages;
+using Microsoft.Graphics.Canvas.Effects;
 
 // https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x804 上介绍了“空白页”项模板
 
@@ -31,8 +32,8 @@ namespace codeRetrievalApp
         {
             this.InitializeComponent();
             
-            ApplicationView.GetForCurrentView().SetPreferredMinSize(new Size(1000, 750));
-            ApplicationView.PreferredLaunchViewSize = new Size(1000, 750);
+            ApplicationView.GetForCurrentView().SetPreferredMinSize(new Size(600, 1000));
+            ApplicationView.PreferredLaunchViewSize = new Size(600, 1000);
             ApplicationView.PreferredLaunchWindowingMode = ApplicationViewWindowingMode.PreferredLaunchViewSize;
             
         }
@@ -46,11 +47,12 @@ namespace codeRetrievalApp
             appTitleBar.ButtonBackgroundColor = Colors.Transparent;
             Window.Current.SetTitleBar(GRIDtitle);
             Constants.mainPage = this;
+            Constants.KWbox = Box;
             //LEAD.Visibility = Visibility.Visible;
             //LEAD.Show(T2input, "");
         }
 
-        private void T2input_ShowAssociates(FrameworkElement kwItem, string keyword)
+        private void T3input_ShowAssociates(FrameworkElement kwItem, string keyword)
         {
             Asso.Visibility = Visibility.Visible;
             Asso.Show(kwItem, keyword);
@@ -58,12 +60,17 @@ namespace codeRetrievalApp
 
         private void BTNsearch_Click(object sender, RoutedEventArgs e)
         {
-            Constants.rootFrame.Navigate(typeof(SearchResultPage), T2input.Query);
+           // Constants.rootFrame.Navigate(typeof(SearchResultPage), T2input.Query);
         }
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            T2input.lead();
+            //T2input.lead();
+        }
+
+        private void T3input_Search(List<string> keywords)
+        {
+            Constants.rootFrame.Navigate(typeof(SearchResultPage), keywords);
         }
     }
 }

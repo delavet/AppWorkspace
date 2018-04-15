@@ -21,14 +21,43 @@
                     <SolidColorBrush x:Key="Lv4Color"
                                      Color="#FFC8CF3D"/>
                     <SolidColorBrush x:Key="Lv5Color"
-                                     Color="#FFF11515"/>
+                                     Color="#FFE74865"/>
                     <SolidColorBrush x:Key="TitleBackground" 
                                      Color="#00FFFFFF"/>
                     <SolidColorBrush x:Key="TitleBarDarkBrush">#FF070707</SolidColorBrush>
-                    <AcrylicBrush x:Key="BgAcrylicBrush"
+                    <SolidColorBrush x:Key="ThemBarBrush">#FF0063B1</SolidColorBrush>
+                    <SolidColorBrush x:Key="ThemeBrush" Color="#FF0078D7"></SolidColorBrush>
+                    <AcrylicBrush x:Key="ThemeAcrylicBrush"
                                   BackgroundSource="HostBackdrop"
-                                  TintOpacity="0"
-                                  FallbackColor="#00000000"/>
+                                  TintOpacity="0.5"
+                                  TintColor="#FF0078D7"
+                                  FallbackColor="#FF0078D7"/>
+                    <AcrylicBrush x:Key="ThemeAcrylicBarBrush"
+                                  BackgroundSource="HostBackdrop"
+                                  TintOpacity="0.6"
+                                  TintColor="#FF0063B1"
+                                  FallbackColor="#FF0063B1"/>
+                    <AcrylicBrush x:Key="ThemeAcrylicElementBrush"
+                                  BackgroundSource="Backdrop"
+                                  TintOpacity="0.3"
+                                  TintColor="#FF0078D7"
+                                  FallbackColor="#FF0078D7"/>
+                    <AcrylicBrush x:Key="ThemeAcrylicBarElementBrush"
+                                  BackgroundSource="Backdrop"
+                                  TintOpacity="0.4"
+                                  TintColor="#FF0063B1"
+                                  FallbackColor="#FF0063B1"/>
+                    <AcrylicBrush x:Key="BgAcrylicBrush"
+                                  BackgroundSource="Backdrop"
+                                  TintColor="White"
+                                  TintOpacity="0.8"
+                                  FallbackColor="White"/>
+                    <SolidColorBrush x:Key="ThemeSecondBrush" Color="LightGray"></SolidColorBrush>
+                    <AcrylicBrush x:Name="ThemeSecondAcrylicBrush"
+                                  BackgroundSource="HostBackdrop"
+                                  TintOpacity="0.7"
+                                  FallbackColor="LightGray"
+                                  TintColor="LightGray"/>
                     <Style x:Key="MyTextBoxStyle" TargetType="TextBox">
                         <Setter Property="MinWidth" Value="{ThemeResource TextControlThemeMinWidth}"/>
                         <Setter Property="MinHeight" Value="{ThemeResource TextControlThemeMinHeight}"/>

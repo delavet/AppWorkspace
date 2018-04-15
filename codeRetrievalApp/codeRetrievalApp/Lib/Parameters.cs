@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace codeRetrievalApp.Lib
 {
-    class Parameters
+    public class Parameters
     {
         public String name { get; set; }
         public String value { get; set; }

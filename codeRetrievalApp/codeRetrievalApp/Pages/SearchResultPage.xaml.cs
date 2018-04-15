@@ -42,7 +42,10 @@ namespace codeRetrievalApp.Pages
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             Window.Current.SetTitleBar(GRIDtitle);
-            codeList = new CodeList(e.Parameter as String);
+            if (e.Parameter is String)
+                codeList = new CodeList(e.Parameter as String);
+            else if (e.Parameter is List<String>)
+                codeList = new CodeList(e.Parameter as List<String>);
             codeList.DataLoaded += DataLoaded;
             codeList.DataLoading += DataLoading;
             GRIDVWcode.ItemsSource = codeList;

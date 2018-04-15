@@ -11,4 +11,6 @@ namespace codeRetrievalApp.Lib
     delegate void DataLoadedEventHandler();
     public delegate void AssociateKeyWordsHandler(FrameworkElement kwItem,String keyword);
     public delegate void KeywordInputCompleteHandler();
+    public delegate void ChangeVarHandler(List<Parameters> list);
+    public delegate void SearchHandler(List<String> keywords);
 }

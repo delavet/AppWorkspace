@@ -46,6 +46,7 @@ namespace codeRetrievalApp.Controls
 
         public async void Show(FrameworkElement KeywordItem, String Keyword)
         {
+            STRBDmask.Begin();
             TXTBLKkw.Text = Keyword;
             _kwItem = KeywordItem;
             _kwItemVisual = _kwItem.GetVisual();
@@ -69,17 +70,17 @@ namespace codeRetrievalApp.Controls
             foreach(var a in array)
             {
                 String assoWord = a.GetString();
-                Button btn = new Button();
-                btn.Content = assoWord;
-                btn.Click += Button_Click;
+                AssociateT2Control btn = new AssociateT2Control(assoWord);
+                btn.ShowAssociates += PassAsso;
                 btn.Margin = new Thickness(5);
                 WPPNasso.Children.Add(btn);
             }
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private async void PassAsso(FrameworkElement element,string kw)
         {
-            throw new NotImplementedException();
+            var Box = Constants.KWbox;
+            Box.AddKeyWord(element, kw);
         }
 
         public Vector2 GetTargetSize()
@@ -116,6 +117,7 @@ namespace codeRetrievalApp.Controls
         private async Task ToggleKwItemAnimationAsync(bool show)
         {
             _kwItemVisual.Opacity = 0f;
+            
 
             var targetSize = GetTargetSize();
             var targetPosition = GetTargetPosition();
@@ -181,6 +183,7 @@ namespace codeRetrievalApp.Controls
         private async void BTNcancel_Click(object sender, RoutedEventArgs e)
         {
             WPPNasso.Children.Clear();
+            STRBDunmask.Begin();
             await DoHideListAsync();
             
         }
