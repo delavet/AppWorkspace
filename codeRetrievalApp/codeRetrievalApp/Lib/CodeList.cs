@@ -37,6 +37,7 @@ namespace codeRetrievalApp.Lib
 
         private String q = "";
 
+
         public CodeList()
         {
             has_more_items = true;
@@ -51,9 +52,9 @@ namespace codeRetrievalApp.Lib
         public CodeList(List<String> qList)
         {
             q = "";
-            foreach(var word in qList)
+            for(int i = 0; i < qList.Count; i++)
             {
-                q = q + word + ",";
+                q = q + qList[i] + ",";
             }
             q = q.Substring(0, q.Length - 1);
             has_more_items = true;
@@ -116,7 +117,9 @@ namespace codeRetrievalApp.Lib
         {
             List<CodeInfo> more_infos = new List<CodeInfo>();
             String json = "";
-            json += "{\"query\":\"";
+            json += "{\"cat\":\"";
+            json += Constants.cat;
+            json += "\",\"query\":\"";
             json += q;
             json += "\",\"page\":";
             json += (current_page + 1).ToString();
@@ -138,12 +141,7 @@ namespace codeRetrievalApp.Lib
                     String post = obj.GetNamedString("post");
                     String code = obj.GetNamedString("code");
                     code = code.Replace('\t', '\n');
-                    if (title.Length > 50)
-                        title = title.Substring(0, 50) + "...";
-                    if (post.Length > 600)
-                        post = post.Substring(0, 600) + "...";
-                    if (code.Length > 200)
-                        code = code.Substring(0, 200) + "...";
+                    int codeLineNum = code.Count(chr => chr == '\n');
                     CodeInfo temp = new CodeInfo(code, post, title, int.Parse(id));
                     more_infos.Add(temp);
                 }

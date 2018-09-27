@@ -111,5 +111,11 @@ namespace codeRetrievalApp.Pages
             item.Content = c;
             CodeControlList[PVT.SelectedIndex] = c;
         }
+
+        private void BTNcancel_Click(object sender, RoutedEventArgs e)
+        {
+            GRIDguide.Visibility = Visibility.Collapsed;
+            BARbottom.IsEnabled = true;
+        }
     }
 }

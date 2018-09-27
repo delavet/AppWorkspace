@@ -24,5 +24,8 @@ namespace codeRetrievalApp.Lib
         }
         public static Frame rootFrame;
         public static BoxControl KWbox;
+        public static InputT3Control input;
+        public static String cat;
+        public static int WaterCol = 3;
     }
 }

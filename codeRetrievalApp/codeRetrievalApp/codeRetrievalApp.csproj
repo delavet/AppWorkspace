@@ -21,7 +21,7 @@
     <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
     <AppxBundle>Always</AppxBundle>
     <AppxBundlePlatforms>x86|x64|arm</AppxBundlePlatforms>
-    <PackageCertificateThumbprint>3A9D5B69A1C6A120B473660125F5CB96206145D1</PackageCertificateThumbprint>
+    <PackageCertificateThumbprint>C185C9768C0F684388EAB7C49A8369A50DB56E74</PackageCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
     <DebugSymbols>true</DebugSymbols>
@@ -117,6 +117,22 @@
     <Compile Include="Controls\CodeLineControl.xaml.cs">
       <DependentUpon>CodeLineControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\CodeLineT2Control.xaml.cs">
+      <DependentUpon>CodeLineT2Control.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\CodeT2Control.xaml.cs">
+      <DependentUpon>CodeT2Control.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\CompositionShadow.xaml.cs">
+      <DependentUpon>CompositionShadow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\HyperShadow.cs" />
+    <Compile Include="Controls\IdentifierControl.xaml.cs">
+      <DependentUpon>IdentifierControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\IDManageControl.xaml.cs">
+      <DependentUpon>IDManageControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\InputControl.xaml.cs">
       <DependentUpon>InputControl.xaml</DependentUpon>
     </Compile>
@@ -146,6 +162,7 @@
     <Compile Include="Controls\VarsControl.xaml.cs">
       <DependentUpon>VarsControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\WaterfallPanel.cs" />
     <Compile Include="Lib\CodeInfo.cs" />
     <Compile Include="Lib\CodeList.cs" />
     <Compile Include="Lib\CompositionAnimationBuilder.cs" />
@@ -163,6 +180,9 @@
     </Compile>
     <Compile Include="Pages\CodeEditPage.xaml.cs">
       <DependentUpon>CodeEditPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\CodeShowPage.xaml.cs">
+      <DependentUpon>CodeShowPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\LeadPage.xaml.cs">
       <DependentUpon>LeadPage.xaml</DependentUpon>
@@ -182,6 +202,10 @@
     <None Include="codeRetrievalApp_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\1.png" />
+    <Content Include="Assets\2.png" />
+    <Content Include="Assets\3.png" />
+    <Content Include="Assets\bg.jpg" />
     <Content Include="Assets\box.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
@@ -218,6 +242,26 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\CodeLineControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\CodeLineT2Control.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\CodeT2Control.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\CompositionShadow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\IdentifierControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\IDManageControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -266,6 +310,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\CodeEditPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\CodeShowPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

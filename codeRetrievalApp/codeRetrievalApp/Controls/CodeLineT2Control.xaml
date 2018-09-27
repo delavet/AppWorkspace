@@ -1,0 +1,42 @@
+﻿<UserControl
+    x:Class="codeRetrievalApp.Controls.CodeLineT2Control"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:codeRetrievalApp.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    xmlns:ms="using:Microsoft.Toolkit.Uwp.UI.Controls"
+    d:DesignHeight="300"
+    d:DesignWidth="400">
+
+    <Grid x:Name="GRIDroot"
+          Background="White">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="60"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="40"/>
+        </Grid.ColumnDefinitions>
+        <TextBlock
+            x:Name="TXTBLKlineId"
+            Grid.Column="0"
+            Foreground="Gray"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Text="1"
+            FontSize="15"/>
+        <Rectangle Grid.Column="0"
+                   Fill="Transparent"
+                   x:Name="RECTleft"
+                   />
+        <Rectangle Grid.Column="2"
+                   Fill="Transparent"
+                   x:Name="RECTright"/>
+        <ms:WrapPanel
+            x:Name="PNcodeLine"
+            Orientation="Horizontal"
+            Background="Transparent"
+            Grid.Column="1">
+        </ms:WrapPanel>
+    </Grid>
+</UserControl>

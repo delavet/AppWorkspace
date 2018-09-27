@@ -47,30 +47,7 @@ namespace codeRetrievalApp.Pages
         
         private void FlipView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            switch (FLPVW.SelectedIndex)
-            {
-                case 0:
-                    {
-                       // T2.lead();
-                        KW1.quitLead1();
-                    }
-                    break;
-                case 1:
-                    {
-                        //T2.quitLead();
-                        KW1.lead1();
-                    }
-                    break;
-                case 2:
-                    {
-                       // T2.quitLead();
-                        KW1.quitLead1();
-                        KW2.lead2();
-                    }
-                    break;
-                default:
-                    break;
-            }
+  
         }
 
 

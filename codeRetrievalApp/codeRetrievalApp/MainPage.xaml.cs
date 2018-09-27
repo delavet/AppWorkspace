@@ -32,8 +32,8 @@ namespace codeRetrievalApp
         {
             this.InitializeComponent();
             
-            ApplicationView.GetForCurrentView().SetPreferredMinSize(new Size(600, 1000));
-            ApplicationView.PreferredLaunchViewSize = new Size(600, 1000);
+            ApplicationView.GetForCurrentView().SetPreferredMinSize(new Size(1000, 600));
+            ApplicationView.PreferredLaunchViewSize = new Size(1000, 600);
             ApplicationView.PreferredLaunchWindowingMode = ApplicationViewWindowingMode.PreferredLaunchViewSize;
             
         }
@@ -48,6 +48,7 @@ namespace codeRetrievalApp
             Window.Current.SetTitleBar(GRIDtitle);
             Constants.mainPage = this;
             Constants.KWbox = Box;
+            Constants.input = T3input;
             //LEAD.Visibility = Visibility.Visible;
             //LEAD.Show(T2input, "");
         }

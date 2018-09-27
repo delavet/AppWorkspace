@@ -34,9 +34,50 @@
         <controls:VarsControl x:Name="VARS"
                               Grid.RowSpan="2"
                               ChangeVar="VARS_ChangeVar"/>
+        <Grid Grid.RowSpan="2"
+              Background="{StaticResource ThemeAcrylicElementBrush}"
+              x:Name="GRIDguide">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <Image Source="ms-appx:///Assets/3.png"
+                               Margin="20,15"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"/>
+                    
+
+                </Grid>
+                <Border Grid.Row="1"
+                            VerticalAlignment="Center">
+                    <StackPanel>
+                        <TextBlock FontWeight="Light"
+                                   FontSize="25"
+                                   Text="swipe through the code lines you want to copy"
+                                   TextWrapping="Wrap"
+                                   Margin="15,5"/>
+                        <Button
+                    x:Name="BTNcancel"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Top"
+                    Click="BTNcancel_Click"
+                            Margin="10,30,10,10"
+                            Foreground="White"
+                    Background="{StaticResource ThemBarBrush}"
+                    Style="{StaticResource ButtonRevealStyle}"
+                            Content="I confirm">
+                        </Button>
+                    </StackPanel>
+                </Border>
+            </Grid>
+        </Grid>
+        
     </Grid>
     <Page.BottomAppBar>
         <CommandBar
+            IsEnabled="False"
             x:Name="BARbottom"
             Background="{StaticResource SystemControlAcrylicWindowBrush}">
             <AppBarButton

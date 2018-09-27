@@ -5,65 +5,130 @@
     xmlns:local="using:codeRetrievalApp.Pages"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d">
+    xmlns:controls="using:codeRetrievalApp.Controls"
+    mc:Ignorable="d"
+    Loaded="Page_Loaded"
+    SizeChanged="Page_SizeChanged">
 
-    <Grid Background="{ThemeResource SystemControlAcrylicWindowBrush}">
+    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="30"/>
-            <RowDefinition Height="48"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <Grid Grid.Row="2"
+        <Grid Grid.Row="0"
+              Grid.RowSpan="2"
               x:Name="GRIDpost">
-            <WebView
-                x:Name="WEBpost"
-                DOMContentLoaded="WEBpost_DOMContentLoaded"
-                LongRunningScriptDetected="WEBpost_LongRunningScriptDetected"
-                ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                NavigationCompleted="WEBpost_NavigationCompleted"/>
+            <ScrollViewer x:Name="SCRpost"
+                          ViewChanged="SCRpost_ViewChanged"
+                          HorizontalScrollMode="Disabled"
+                          HorizontalScrollBarVisibility="Disabled">
+                <WebView
+                        x:Name="WEBpost"
+                        DOMContentLoaded="WEBpost_DOMContentLoaded"
+                        LongRunningScriptDetected="WEBpost_LongRunningScriptDetected"
+                        ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                        ScrollViewer.HorizontalScrollMode="Disabled"
+                        NavigationCompleted="WEBpost_NavigationCompleted"
+                        ScriptNotify="WEBpost_ScriptNotify"
+                        Margin="0,300,0,0"
+                        />
+            </ScrollViewer>
+        </Grid>
+        <Grid x:Name="Header"
+                  Height="300"
+                  VerticalAlignment="Top"
+              Grid.Row="0"
+              Grid.RowSpan="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="250"/>
+                <RowDefinition Height="50"/>
+            </Grid.RowDefinitions>
+            <Rectangle x:Name="RECTback"
+                           Height="300"
+                           HorizontalAlignment="Stretch"
+                           VerticalAlignment="Top"
+                       Grid.RowSpan="2">
+                <Rectangle.Fill>
+                    <ImageBrush x:Name="BackgroundImage"
+                                    ImageSource="ms-appx:///Assets/bg.jpg"
+                                    Stretch="UniformToFill"/>
+                </Rectangle.Fill>
+            </Rectangle>
+            <Rectangle
+                x:Name="OverlayRectangle"
+                Fill="{StaticResource SystemControlAccentDark2AcrylicElementAccentDark2MediumHighBrush}"
+                Height="300"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Top"
+                Grid.RowSpan="2"/>
+            <StackPanel 
+                x:Name="TextContainer"
+                Orientation="Vertical"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Margin="30,70,30,0">
+                <TextBlock 
+                    x:Name="TitleBlock"
+                    Foreground="White"
+                    Text="Unknown Title" 
+                    FontSize="20"
+                    TextWrapping="Wrap"
+                    FontWeight="Bold"/>
+                <TextBlock 
+                    x:Name="Blurb" 
+                    Foreground="White" 
+                    FontSize="16" 
+                    MaxWidth="450" 
+                    HorizontalAlignment="Left"
+                    TextWrapping="Wrap" 
+                    Margin="0,20,0,0">
+                        Uknow text                
+                </TextBlock>
+                
+            </StackPanel>
+            <StackPanel 
+                Grid.Row="1"
+                    x:Name="ButtonPanel"
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                    Margin="30,0,0,0">
+                <HyperlinkButton
+                        Content="More"
+                        x:Name="HYPERmore"
+                        Click="HYPERmore_Click"
+                        Foreground="#FF72ACE3"/>
+                <HyperlinkButton
+                        Content="Source Page"
+                        x:Name="HYPERsource"
+                        Foreground="#FF72ACE3"
+                        Margin="30,0,0,0"/>
 
+            </StackPanel>
         </Grid>
         <Grid x:Name="GRIDtitle"
-              VerticalAlignment="Stretch"
+              VerticalAlignment="Top"
               HorizontalAlignment="Stretch"
-              Background="{ThemeResource ThemeAcrylicBarElementBrush}"
+              Background="Transparent"
+              Height="30"
               Grid.Row="0">
             <TextBlock FontSize="20"
                        FontWeight="Light"
                        Foreground="White"
                        Text="sample app"
                        HorizontalAlignment="Center"/>
+
         </Grid>
-        <Grid x:Name="GRIDresult"
-              VerticalAlignment="Stretch"
-              HorizontalAlignment="Stretch"
-              Background="{StaticResource ThemeAcrylicElementBrush}"
-              Grid.Row="1">
-            <TextBlock
-                    x:Name="TXTBLKtitle"
-                    VerticalAlignment="Center"
-                    FontSize="25"
-                    FontWeight="SemiBold"
-                    Foreground="Black"
-                    Margin="25,0,0,0"
-                    Text="Result"  />
-        </Grid>
+        <controls:MyProgressBar 
+            x:Name="PRGRS"
+            Grid.Row="0"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Top"/>
+        <controls:CodeT2Control
+            x:Name="CODE"
+            Opacity="0"
+            Visibility="Collapsed"
+            Grid.RowSpan="2"/>
     </Grid>
-    <Page.BottomAppBar>
-        <CommandBar
-            x:Name="BARbottom"
-            Background="{StaticResource SystemControlAcrylicWindowBrush}">
-            <AppBarButton
-                x:Name="BTNsource"
-                Label="view source"
-                Icon="WebCam"
-                Click="BTNsource_Click"/>
-            <AppBarButton
-                x:Name="BTNcode"
-                Label="edit code"
-                Icon="Edit"
-                Click="BTNcode_Click"/>
-        </CommandBar>
-    </Page.BottomAppBar>
 </Page>

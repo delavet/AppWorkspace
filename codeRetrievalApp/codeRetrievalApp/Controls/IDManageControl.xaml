@@ -1,0 +1,163 @@
+﻿<UserControl
+    x:Class="codeRetrievalApp.Controls.IDManageControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:codeRetrievalApp.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="500"
+    d:DesignWidth="400">
+
+    <Grid
+        MaxHeight="500"
+        MaxWidth="400">
+        <ScrollViewer 
+            VerticalScrollBarVisibility="Hidden"
+            VerticalScrollMode="Auto"
+            HorizontalScrollMode="Disabled">
+            <StackPanel>
+                <TextBlock
+                    x:Name="TXTBLKidName"
+                    Text="Unknown"
+                    HorizontalAlignment="Center"
+                    Margin="10"
+                    FontSize="30"
+                    FontWeight="Bold"
+                    />
+                <Grid
+                    x:Name="GRIDdescription"
+                    Margin="10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="35"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Border Grid.Row="0"
+                            Background="#AAAAAAAA">
+                        <TextBlock 
+                            Text="desctiption"
+                            FontSize="20"
+                            FontWeight="SemiBold"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"/>
+                    </Border>
+                    <Border
+                        Grid.Row="1"
+                        Background="#AAFFFFFF">
+                        <Grid>
+                            <local:MyProgressBar
+                                HorizontalAlignment="Stretch"
+                                VerticalAlignment="Top"
+                                x:Name="PRGRS"/>
+                            <StackPanel>
+                                <TextBlock
+                                        x:Name="TXTBLKdescription"
+                                        Text="No description"
+                                        Margin="8"
+                                        FontSize="15"
+                                        FontWeight="SemiLight">
+                                </TextBlock>
+                                <HyperlinkButton
+                                        Content="detail"
+                                        Margin="8,0"
+                                        x:Name="HYPERdetail"
+                                        Foreground="#FF72ACE3"/>
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+                </Grid>
+                <Grid
+                    x:Name="GRIDrename"
+                    Margin="10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="35"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Border Grid.Row="0"
+                            Background="#AAAAAAAA">
+                        <TextBlock 
+                            Text="rename"
+                            FontSize="20"
+                            FontWeight="SemiBold"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"/>
+                    </Border>
+                    <Border
+                        Grid.Row="1"
+                        Background="#AAFFFFFF">
+                        <StackPanel Margin="8">
+                            <StackPanel
+                                Orientation="Horizontal"
+                                HorizontalAlignment="Center">
+                                <TextBlock
+                                    Text="Rename it to: "
+                                    FontSize="20"
+                                    FontWeight="SemiLight"
+                                    HorizontalAlignment="Left"
+                                    VerticalAlignment="Center"
+                                    Margin="15,0"/>
+                                <TextBox
+                                    x:Name="TXTBXrename"
+                                    Style="{StaticResource MyTextBoxStyle}"
+                                    FontSize="20"
+                                    FontWeight="SemiLight"
+                                    HorizontalAlignment="Stretch"
+                                    VerticalAlignment="Center"
+                                    PlaceholderText="Replacement"
+                                    TextChanged="TextBox_TextChanged"/>
+                            </StackPanel>
+                            <StackPanel
+                                Orientation="Horizontal"
+                                HorizontalAlignment="Center"
+                                Margin="5">
+                                <RadioButton
+                                    x:Name="RBTNrename"
+                                    Content="Replace All"
+                                    HorizontalAlignment="Center"
+                                    Margin="15,0"
+                                />
+                                <Button
+                                    Margin="15,0"
+                                    x:Name="BTNrename"
+                                    Content="Confirm"
+                                    IsEnabled="False"
+                                    Style="{StaticResource ButtonRevealStyle}"
+                                    Click="BTNrename_Click"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </Border>
+                </Grid>
+                <Grid
+                    x:Name="GRIDappearances"
+                    Margin="10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="35"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Border Grid.Row="0"
+                            Background="#AAAAAAAA">
+                        <TextBlock 
+                            Text="appearances"
+                            FontSize="20"
+                            FontWeight="SemiBold"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"/>
+                    </Border>
+                    <Border
+                        Grid.Row="1"
+                        Background="#AAFFFFFF">
+                        <Grid>
+                            <RichTextBlock
+                                x:Name="RCHTXTappr"
+                                Margin="8"
+                                FontSize="20"
+                                FontWeight="SemiLight">
+                                
+                            </RichTextBlock>
+                        </Grid>
+                    </Border>
+                </Grid>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</UserControl>

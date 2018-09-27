@@ -6,6 +6,10 @@
     RequestedTheme="Light">
     <Application.Resources>
         <ResourceDictionary>
+            <AcrylicBrush x:Key="CustomAcrylicInAppBrush"
+                      BackgroundSource="Backdrop"
+                      TintColor="#1FFFFFFF"
+                      TintOpacity="0.5"/>
             <ResourceDictionary.ThemeDictionaries>
                 <ResourceDictionary x:Key="Light">
                     <SolidColorBrush x:Key="MicroSoftRed" Color="#AFF65314"/>
@@ -29,24 +33,24 @@
                     <SolidColorBrush x:Key="ThemeBrush" Color="#FF0078D7"></SolidColorBrush>
                     <AcrylicBrush x:Key="ThemeAcrylicBrush"
                                   BackgroundSource="HostBackdrop"
-                                  TintOpacity="0.5"
-                                  TintColor="#FF0078D7"
-                                  FallbackColor="#FF0078D7"/>
+                                  TintOpacity="0.8"
+                                  TintColor="DimGray"
+                                  FallbackColor="DimGray"/>
                     <AcrylicBrush x:Key="ThemeAcrylicBarBrush"
                                   BackgroundSource="HostBackdrop"
-                                  TintOpacity="0.6"
-                                  TintColor="#FF0063B1"
-                                  FallbackColor="#FF0063B1"/>
+                                  TintOpacity="0.7"
+                                  TintColor="DimGray"
+                                  FallbackColor="DimGray"/>
                     <AcrylicBrush x:Key="ThemeAcrylicElementBrush"
                                   BackgroundSource="Backdrop"
                                   TintOpacity="0.3"
-                                  TintColor="#FF0078D7"
-                                  FallbackColor="#FF0078D7"/>
+                                  TintColor="DimGray"
+                                  FallbackColor="DimGray"/>
                     <AcrylicBrush x:Key="ThemeAcrylicBarElementBrush"
                                   BackgroundSource="Backdrop"
                                   TintOpacity="0.4"
-                                  TintColor="#FF0063B1"
-                                  FallbackColor="#FF0063B1"/>
+                                  TintColor="DimGray"
+                                  FallbackColor="DimGray"/>
                     <AcrylicBrush x:Key="BgAcrylicBrush"
                                   BackgroundSource="Backdrop"
                                   TintColor="White"

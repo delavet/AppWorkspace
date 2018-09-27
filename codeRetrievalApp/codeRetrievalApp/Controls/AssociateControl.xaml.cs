@@ -60,7 +60,7 @@ namespace codeRetrievalApp.Controls
 
         private async Task InnerShow(String k)
         {
-            String json = "{\"keyword\":\"" + k + "\"}";
+            String json = "{\"cat\":\""+Constants.cat+"\",\"keyword\":\"" + k + "\"}";
             var param = await WebConnection.Connect_by_json("http://127.0.0.1:8000/asso", json);
             if (!param.name.Equals("200")) return;
             JsonObject jsonObject = JsonObject.Parse(param.value);
@@ -81,6 +81,8 @@ namespace codeRetrievalApp.Controls
         {
             var Box = Constants.KWbox;
             Box.AddKeyWord(element, kw);
+            var input = Constants.input;
+            input.AddKeyword(kw);
         }
 
         public Vector2 GetTargetSize()

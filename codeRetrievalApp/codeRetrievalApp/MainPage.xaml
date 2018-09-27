@@ -10,15 +10,15 @@
     Loaded="Page_Loaded">
 
     <Grid x:Name="GRIDroot"
-          Background="WhiteSmoke">
+          Background="Transparent">
         <Grid.RowDefinitions>
-            <RowDefinition Height="30" x:Name="HEIGHTtitle"/>
+            <RowDefinition Height="32" x:Name="HEIGHTtitle"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Grid x:Name="GRIDtitle"
               VerticalAlignment="Top"
               HorizontalAlignment="Stretch"
-              Height="30"
+              Height="32"
               Grid.Row="0"
               Background="{StaticResource ThemeAcrylicBarBrush}">
             <TextBlock FontSize="20"
@@ -28,7 +28,8 @@
                        HorizontalAlignment="Center"/>
         </Grid>
         <Grid x:Name="GRIDcontent"
-              Grid.Row="1">
+              Grid.Row="1"
+              Background="{StaticResource ThemeAcrylicBrush}">
             <!--StackPanel >
                 <controls:InputT2Control
                 x:Name="T2input"

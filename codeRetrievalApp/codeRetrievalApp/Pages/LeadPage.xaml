@@ -9,7 +9,7 @@
     mc:Ignorable="d">
 
     <Grid x:Name="GRIDroot"
-          Background="{StaticResource SystemControlAccentAcrylicWindowAccentMediumHighBrush}">
+          Background="{StaticResource ThemeAcrylicBrush}">
         <Grid.RowDefinitions>
             <RowDefinition Height="30" x:Name="HEIGHTtitle"/>
             <RowDefinition Height="*"/>
@@ -36,20 +36,32 @@
                         <RowDefinition Height="2*"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
-                    <!--
-                    <controls:InputT2Control
-                        x:Name="T2"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
-                        ShowAssociates="T2_ShowAssociates"/>-->
-                    <Border Grid.Row="1">
-                        <TextBlock FontWeight="Light"
-                                   FontSize="30"
-                                   Text="Manage your natural language input to search the code here"
+                    <Grid Grid.Row="0">
+                        <Image Source="ms-appx:///Assets/1.png"
+                               Margin="20,15"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"/>
+                    </Grid>
+                    <!--left tap a keyword to show its synonymsright tap it to make it more important in your query-->
+                    <Border Grid.Row="1"
+                            VerticalAlignment="Center">
+                        <StackPanel>
+                            <TextBlock FontWeight="Light"
+                                   FontSize="25"
+                                   Text="input your query, the keywords will be automatically analysised"
                                    TextWrapping="Wrap"
-                                   Margin="15"
-                                   HorizontalAlignment="Center"
-                                   VerticalAlignment="Center"/>
+                                   Margin="15,5"/>
+                            <TextBlock FontWeight="Light"
+                                   FontSize="25"
+                                   Text="left tap a keyword to show its synonyms"
+                                   TextWrapping="Wrap"
+                                   Margin="15,5"/>
+                            <TextBlock FontWeight="Light"
+                                   FontSize="25"
+                                   Text="right tap it to make it more important in your query"
+                                   TextWrapping="Wrap"
+                                   Margin="15,5"/>
+                        </StackPanel>
                     </Border>
                 </Grid>
                 <Grid>
@@ -57,28 +69,12 @@
                         <RowDefinition Height="2*"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
-                    <controls:KeywordControl
-                        x:Name="KW1"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
-                        ShowAssociates="T2_ShowAssociates"
-                        KeywordComplete="KW1_KeywordComplete"/>
-                    <Border Grid.Row="1">
-                        <TextBlock FontWeight="Light"
-                                   FontSize="30"
-                                   Text="Press up to make your key word more important, and down for opposite purpose"
-                                   TextWrapping="Wrap"
-                                   Margin="15"
-                                   HorizontalAlignment="Center"
-                                   VerticalAlignment="Center"/>
-                    </Border>
-                </Grid>
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="2*"/>
-                        <RowDefinition Height="*"/>
-                    </Grid.RowDefinitions>
-                    <Button
+                    <Grid Grid.Row="0">
+                        <Image Source="ms-appx:///Assets/2.png"
+                               Margin="20,15"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"/>
+                        <Button
                     x:Name="BTNcancel"
                     Width="64"
                     Height="64"
@@ -87,27 +83,30 @@
                     Click="BTNcancel_Click"
                     Background="Transparent"
                     Style="{StaticResource ButtonRevealStyle}">
-                        <SymbolIcon
+                            <SymbolIcon
                              x:Name="CancelIcon"
                             Foreground="White"
                             Symbol="Cancel" />
-                    </Button>
-                    <controls:KeywordControl
-                        x:Name="KW2"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
-                        ShowAssociates="T2_ShowAssociates"
-                        KeywordComplete="KW1_KeywordComplete"/>
-                    <Border Grid.Row="1">
-                        <TextBlock FontWeight="Light"
-                                   FontSize="30"
-                                   Text="Press hint to get some hint about your current key word ( in same topic ) "
+                        </Button>
+                        
+                    </Grid>
+                    <Border Grid.Row="1"
+                            VerticalAlignment="Center">
+                        <StackPanel>
+                            <TextBlock FontWeight="Light"
+                                   FontSize="25"
+                                   Text="click a synonym to add it to you query"
                                    TextWrapping="Wrap"
-                                   Margin="15"
-                                   HorizontalAlignment="Center"
-                                   VerticalAlignment="Center"/>
+                                   Margin="15,5"/>
+                            <TextBlock FontWeight="Light"
+                                   FontSize="25"
+                                   Text="you can check all synonyms added from the bottom box"
+                                   TextWrapping="Wrap"
+                                   Margin="15,5"/>
+                        </StackPanel>
                     </Border>
                 </Grid>
+                
             </FlipView>
         </Grid>
     </Grid>

@@ -18,6 +18,8 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using codeRetrievalApp.Lib;
+using Windows.UI;
+using codeRetrievalApp.Controls;
 
 // https://go.microsoft.com/fwlink/?LinkId=234238 上介绍了“空白页”项模板
 
@@ -69,8 +71,7 @@ namespace codeRetrievalApp.Pages
             
             if(gridView.ContainerFromItem(item) is GridViewItem)
             {
-                gridView.PrepareConnectedAnimation("controlAnimation", item, "TXTBLKtitle");
-                gridView.PrepareConnectedAnimation("postAnimation", item, "TXTBLKpost");
+                gridView.PrepareConnectedAnimation("postAnimation", item, "RootGrid");
             }
             this.Frame.Navigate(typeof(CodeDetailPage), item);
         }
@@ -86,6 +87,50 @@ namespace codeRetrievalApp.Pages
             {
                 var child = Windows.UI.Xaml.Media.VisualTreeHelper.GetChild(depObj, i);
                 var result = GetItemsWrapGrid(child);
+                if (result != null)
+                    return result;
+            }
+            return null;
+        }
+
+        public RichTextBlock GetRichTextBlock(Windows.UI.Xaml.DependencyObject depObj)
+        {
+            if (depObj is RichTextBlock)
+            {
+                return depObj as RichTextBlock;
+            }
+            for (int i = 0; i < Windows.UI.Xaml.Media.VisualTreeHelper.GetChildrenCount(depObj); i++)
+            {
+                var child = Windows.UI.Xaml.Media.VisualTreeHelper.GetChild(depObj, i);
+                var result = GetRichTextBlock(child);
+                if (result != null)
+                    return result;
+            }
+            return null;
+        }
+
+        public TextBlock GetTextBlock(Windows.UI.Xaml.DependencyObject depObj)
+        {
+            if (depObj is TextBlock)
+            {
+                try
+                {
+                    var ret = depObj as TextBlock;
+                    if (ret.DataContext.ToString() == "me")
+                    {
+                        return ret;
+                    }
+                    else return null;
+                }
+                catch
+                {
+                    return null;
+                }
+            }
+            for (int i = Windows.UI.Xaml.Media.VisualTreeHelper.GetChildrenCount(depObj) -1 ; i >=0 ; i--)
+            {
+                var child = Windows.UI.Xaml.Media.VisualTreeHelper.GetChild(depObj, i);
+                var result = GetTextBlock(child);
                 if (result != null)
                     return result;
             }
@@ -113,7 +158,11 @@ namespace codeRetrievalApp.Pages
 
         private void GRIDVWcode_Loaded(object sender, RoutedEventArgs e)
         {
+            foreach(var item in GRIDVWcode.Items)
+            {
 
+                var a = item;
+            }
         }
 
         private void GRIDVWcode_ContainerContentChanging(ListViewBase sender, ContainerContentChangingEventArgs args)
@@ -131,7 +180,24 @@ namespace codeRetrievalApp.Pages
         {
             var itemsPanel = (ItemsWrapGrid)GRIDVWcode.ItemsPanelRoot;
             var itemContainer = (GridViewItem)sender;
+            var txt = GetRichTextBlock(itemContainer);
             var itemIndex = GRIDVWcode.IndexFromContainer(itemContainer);
+            var p = codeList[itemIndex].RichTextCode;
+            if (p == null)
+            {
+                TextBlock rtxt = GetTextBlock(itemContainer);
+                if (rtxt != null)
+                {
+                    rtxt.Opacity = 1;
+                    rtxt.Visibility = Visibility.Visible;
+                    txt.Opacity = 0;
+                }
+            }
+            else
+            {
+                txt.Blocks.Add(p);
+            }
+            
             if (itemIndex >= itemsPanel.FirstVisibleIndex && itemIndex <= itemsPanel.LastVisibleIndex)
             {
                 var itemVisual = itemContainer.GetVisual();
@@ -262,6 +328,25 @@ namespace codeRetrievalApp.Pages
             var rootGrid = sender as Grid;
             rootGrid.PointerEntered -= RootGrid_PointerEntered;
             rootGrid.PointerExited -= RootGrid_PointerExited;
+        }
+
+        private void Border_PointerEntered(object sender, PointerRoutedEventArgs e)
+        {
+            if(sender is Border)
+            {
+                Border b = sender as Border;
+                b.Background = new SolidColorBrush(Color.FromArgb(0xff,0xaa,0xaa,0xaa));
+            }
+        }
+
+        private void Border_PointerExited(object sender, PointerRoutedEventArgs e)
+        {
+            
+            if (sender is Border)
+            {
+                Border b = sender as Border;
+                b.Background = new SolidColorBrush(Color.FromArgb(0xff, 0xff, 0xff, 0xff));
+            }
         }
     }
 }

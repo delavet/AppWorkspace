@@ -8,64 +8,95 @@
     xmlns:ms="using:Microsoft.Toolkit.Uwp.UI.Controls"
     mc:Ignorable="d"
     d:DesignHeight="300"
-    d:DesignWidth="400">
+    d:DesignWidth="400"
+    Background="Transparent">
 
-    <Grid x:Name="GRIDroot">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="56"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
+    <Grid x:Name="GRIDroot"
+          >
         <Grid x:Name="GRIDinput"
-              Background="{StaticResource ThemeAcrylicBrush}">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="56"/>
-            </Grid.ColumnDefinitions>
-            <Grid Grid.Column="0">
-                <local:Shadow Z_Depth="1"
+              VerticalAlignment="Top"
+              HorizontalAlignment="Stretch">
+            <local:Shadow Z_Depth="5"
                           IsCached="True"
-                          CornerRadius="3"
-                          Margin="5,0.5,2,0.5">
-                    <Border CornerRadius="3"
+                          CornerRadius="0"
+                          Margin="10">
+                <Border 
                         Background="White">
+                    <Grid x:Name="GRIDcontent"
+                          Height="50">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="50"/>
+                        </Grid.ColumnDefinitions>
                         <TextBox x:Name="TXTBXinput"
                              Style="{StaticResource MyTextBoxStyle}"
-                             PlaceholderText="tab to input your query here"
-                                 FontSize="23"
-                                 HorizontalAlignment="Stretch"
-                                 VerticalAlignment="Stretch"
-                                 TextChanged="TXTBXinput_TextChanged"/>
-                    </Border>
-                </local:Shadow>
-            </Grid>
-            <Grid Grid.Column="1">
-                <Button x:Name="BTNsearch"
-                    Margin="0,2,2,2"
-                    Style="{StaticResource ButtonRevealStyle}"
-                    HorizontalAlignment="Center"
-                    VerticalAlignment="Center"
-                    Click="BTNsearch_Click"
-                    Background="Transparent">
-                    <Border Width="52"
-                        Height="52"
-                        BorderThickness="0.5"
+                             PlaceholderText="Choose the field you want to search in first↓"
+                              IsEnabled="False"
+                              Grid.Column="0"
+                             FontSize="28"
+                             VerticalAlignment="Stretch"
+                             HorizontalAlignment="Stretch"
+                             TextChanged="TXTBXinput_TextChanged" />
+                        <Button x:Name="BTNsearch"
+                            Grid.Column="1"
+                            IsEnabled="False"
+                            Style="{StaticResource ButtonRevealStyle}"
                             HorizontalAlignment="Center"
-                            VerticalAlignment="Center">
-                        <FontIcon FontFamily="Segoe MDL2 Assets"
-                              Glyph="&#xE094;"
-                              FontSize="23"
-                              Foreground="Black"/>
-                    </Border>
-                </Button>
-            </Grid>
+                            VerticalAlignment="Center"
+                            Click="BTNsearch_Click"
+                            Background="Transparent">
+                            <Border Width="48"
+                                Height="48"
+                                BorderThickness="0"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center">
+                                <FontIcon FontFamily="Segoe MDL2 Assets"
+                                                  Glyph="&#xE094;"
+                                                  FontSize="23"
+                                                  Foreground="Black"/>
+                            </Border>
+                        </Button>
+                    </Grid>
+
+                </Border>
+            </local:Shadow>
+
         </Grid>
         <Grid x:Name="GRIDasso"
-              Grid.Row="1">
+                    Margin="0,170,0,0"
+              HorizontalAlignment="Stretch"
+              VerticalAlignment="Stretch">
             <ms:WrapPanel x:Name="WPPNkw"
                           Orientation="Horizontal"
                           Margin="10,5">
-                
+
             </ms:WrapPanel>
+        </Grid>
+        <Grid Margin="50,100,50,0"
+              x:Name="GRIDfield"
+              HorizontalAlignment="Center"
+              VerticalAlignment="Top">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Search source code about"
+                           VerticalAlignment="Center"
+                           Foreground="White"
+                           FontSize="18"/>
+                <ComboBox x:Name="COMfield"
+                  Margin="20,0,0,0"
+                          HorizontalAlignment="Stretch"
+                          SelectionChanged="COMfield_SelectionChanged">
+                    <ComboBoxItem Content="Swing"/>
+                    <ComboBoxItem Content="Database"/>
+                    <ComboBoxItem Content="Array"/>
+                    <ComboBoxItem Content="Xml"/>
+                    <ComboBoxItem Content="Regex"/>
+                    <ComboBoxItem Content="Database"/>
+                    <ComboBoxItem Content="Nextwork"/>
+                    <ComboBoxItem Content="String"/>
+                    <ComboBoxItem Content="File"/>
+                    <ComboBoxItem Content="Json"/>
+                </ComboBox>
+            </StackPanel>
         </Grid>
     </Grid>
 </UserControl>

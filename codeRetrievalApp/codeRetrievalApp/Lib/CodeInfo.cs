@@ -1,10 +1,19 @@
-﻿using System;
+﻿using HtmlAgilityPack;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using Windows.UI;
+using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Documents;
+using Windows.UI.Xaml.Markup;
+using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Shapes;
 
 namespace codeRetrievalApp.Lib
 {
@@ -54,7 +63,10 @@ namespace codeRetrievalApp.Lib
             }
             set
             {
-                _post = value;
+                var srcDoc = new HtmlDocument();
+                srcDoc.LoadHtml(value);
+                var text = srcDoc.DocumentNode.InnerText;
+                _post = text;
                 OnPropertyChanged();
             }
         }
@@ -68,6 +80,35 @@ namespace codeRetrievalApp.Lib
             {
                 _title = value;
                 OnPropertyChanged();
+            }
+        }
+
+        public Paragraph RichTextCode
+        {
+            get
+            {
+                Paragraph p = null;
+                string xaml = "<Paragraph  xmlns=\"http://schemas.microsoft.com/winfx/2006/xaml/presentation\">";
+                try
+                {
+                    var lines = code.Split('\n');
+                    foreach (var line in lines)
+                    {
+                        var ids = Util.SplitCodeLine(line);
+                        foreach (var id in ids)
+                        {
+                            xaml += Util.GetSpanOfId(id);
+                        }
+                        xaml += "<LineBreak/><Span/>";
+                    }
+                    xaml += "</Paragraph>";
+                    p = (Paragraph)XamlReader.Load(xaml);
+                }
+                catch
+                {
+                    p = null;
+                }
+                return p;
             }
         }
 

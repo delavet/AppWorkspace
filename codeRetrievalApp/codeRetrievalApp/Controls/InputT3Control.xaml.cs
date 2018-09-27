@@ -21,12 +21,18 @@ namespace codeRetrievalApp.Controls
 {
     public sealed partial class InputT3Control : UserControl
     {
+        String[] cats = { "swing/", "android/", "array/", "xml/", "regex/", "network/", "string/", "file/", "json/" };
         public event SearchHandler Search;
         public event AssociateKeyWordsHandler ShowAssociates;
         private List<AssociateT2Control> KeyWordControls = new List<AssociateT2Control>();
         public InputT3Control()
         {
             this.InitializeComponent();
+        }
+
+        public void AddKeyword(String key)
+        {
+            TXTBXinput.Text += ";" + key;
         }
 
         private void BTNsearch_Click(object sender, RoutedEventArgs e)
@@ -114,6 +120,14 @@ namespace codeRetrievalApp.Controls
         private void PassShowAsso(FrameworkElement kwItem, string kw)
         {
             ShowAssociates(kwItem, kw);
+        }
+
+        private void COMfield_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            TXTBXinput.IsEnabled = true;
+            BTNsearch.IsEnabled = true;
+            TXTBXinput.PlaceholderText = "Press tab twice to start search";
+            Constants.cat = cats[COMfield.SelectedIndex];
         }
     }
 }
